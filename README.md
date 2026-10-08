@@ -7,10 +7,12 @@ leaves every change to you. It never writes for you.
 Try it at **[researchly-chi.vercel.app](https://researchly-chi.vercel.app)**,
 on your own draft or on the made-up demo paper.
 
-[![Researchly in 50 seconds: play the video](media/researchly-in-50-seconds.png)](media/researchly-in-50-seconds.mp4?raw=true)
+[![Researchly in about a minute: play the video](media/researchly-video.png)](media/researchly-video.mp4?raw=true)
 
-*Researchly in 50 seconds (click to play). The paper in it is the made-up
-demo paper in `demo/`, with 17 mistakes planted on purpose.*
+*Researchly in about a minute (click to play). The paper in it is the
+made-up demo paper in `demo/`, with 17 mistakes planted on purpose. The
+narration is a synthetic voice (Kokoro, an open-source text-to-speech
+model).*
 
 ## Why
 
