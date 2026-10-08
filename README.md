@@ -7,6 +7,11 @@ leaves every change to you. It never writes for you.
 Try it at **[researchly-chi.vercel.app](https://researchly-chi.vercel.app)**,
 on your own draft or on the made-up demo paper.
 
+[![Researchly in 50 seconds: play the video](media/researchly-in-50-seconds.png)](media/researchly-in-50-seconds.mp4?raw=true)
+
+*Researchly in 50 seconds (click to play). The paper in it is the made-up
+demo paper in `demo/`, with 17 mistakes planted on purpose.*
+
 ## Why
 
 Feedback on scientific writing usually arrives late, after a draft has gone
