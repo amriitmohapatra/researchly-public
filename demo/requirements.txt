@@ -1,0 +1,6 @@
+# To rebuild the demo manuscript (demo/build_demo.py) and run demo/tests.
+# The engine's own requirements (packages/core/requirements.txt) come first.
+# Licences: python-docx MIT, matplotlib PSF-based, lxml BSD.
+python-docx>=1.1,<2
+matplotlib>=3.7,<4
+lxml>=4.9,<6

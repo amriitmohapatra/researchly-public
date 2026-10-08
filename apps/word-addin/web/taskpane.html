@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Researchly</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo">R</span>
+      <div>
+        <h1>Researchly</h1>
+        <p class="tagline">section-aware suggestions for scientific writing</p>
+      </div>
+    </div>
+    <div id="status" class="status">connecting to local server…</div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="check">Check</button>
+    <button class="tab" data-tab="review">Review</button>
+    <button class="tab" data-tab="polish">Polish</button>
+    <button class="tab" data-tab="settings">Settings</button>
+    <button class="tab" data-tab="health">Health</button>
+  </nav>
+
+  <!-- ============ CHECK ============ -->
+  <section class="tabpane" id="pane-check">
+    <div class="controls">
+      <button id="checkBtn" class="primary" disabled>Check document</button>
+      <label class="toggle">
+        <input type="checkbox" id="autoChk" />
+        <span>re-check as I type</span>
+      </label>
+      <label class="toggle small">
+        <input type="checkbox" id="prefChk" />
+        <span>show preferences</span>
+      </label>
+    </div>
+
+    <div id="summary" class="summary hidden"></div>
+    <div id="tiers" class="tiers hidden"></div>
+    <div id="muted" class="muted-line hidden"></div>
+
+    <main id="results">
+      <div class="empty">
+        <p>Start the local server, then click <b>Check document</b>.</p>
+        <p class="dim">Your text is analysed on this computer only — nothing
+        is uploaded anywhere.</p>
+      </div>
+    </main>
+
+    <footer id="metrics" class="metrics hidden"></footer>
+  </section>
+
+  <!-- ============ REVIEW ============ -->
+  <section class="tabpane hidden" id="pane-review">
+    <div class="controls">
+      <button id="reviewBtn" class="primary" disabled>Run reviewer's brief</button>
+    </div>
+    <p class="dim pad">The friendly-sceptical reader: aims, claims,
+    warranting, argument structure (Toulmin), limitations, significance —
+    from deterministic evidence, computed on this computer.</p>
+    <pre id="reviewOut" class="review-out hidden"></pre>
+  </section>
+
+  <!-- ============ POLISH ============ -->
+  <section class="tabpane hidden" id="pane-polish">
+    <div class="controls">
+      <button id="polishBtn" class="primary alt" disabled>Polish selection</button>
+      <label class="toggle small">
+        <input type="checkbox" id="trackChk" checked />
+        <span>apply fixes as tracked changes</span>
+      </label>
+    </div>
+    <div id="polishPanel" class="polish hidden">
+      <div class="polish-head">
+        <b>Polish — rule-composed rewrite</b>
+        <span class="dim-note">every change traceable, no AI generation</span>
+      </div>
+      <div id="polishDiff" class="polish-diff"></div>
+      <div id="polishEdits" class="polish-edits"></div>
+      <div class="actions polish-actions">
+        <button id="polishInsert" class="apply">Insert (tracked)</button>
+        <button id="polishDiscard">Discard</button>
+      </div>
+    </div>
+    <p class="dim pad" id="polishHint">Select a sentence or paragraph in the
+    document, then click Polish selection.</p>
+  </section>
+
+  <!-- ============ SETTINGS ============ -->
+  <section class="tabpane hidden" id="pane-settings">
+    <p class="dim pad">Shared settings — the CLI, the macOS/Windows apps and
+    the editor extensions read this same configuration
+    (<code>~/.researchly/config.toml</code>).</p>
+
+    <div class="setting-row">
+      <label for="setDocType">Document type</label>
+      <select id="setDocType">
+        <option value="auto">auto-detect</option>
+        <option value="thesis-chapter">thesis chapter</option>
+        <option value="manuscript">manuscript</option>
+        <option value="abstract">abstract</option>
+        <option value="grant">grant</option>
+        <option value="response-to-reviewers">response to reviewers</option>
+      </select>
+    </div>
+    <div class="setting-row">
+      <label for="setAggr">Suggestion volume</label>
+      <select id="setAggr">
+        <option value="light">light</option>
+        <option value="standard">standard</option>
+        <option value="thorough">thorough</option>
+      </select>
+    </div>
+    <div class="setting-row">
+      <label for="setLocale">English variant</label>
+      <select id="setLocale">
+        <option value="en-US">en-US</option>
+        <option value="en-GB">en-GB</option>
+      </select>
+    </div>
+    <div class="setting-row">
+      <label class="toggle">
+        <input type="checkbox" id="setPrefs" />
+        <span>show preference-type suggestions</span>
+      </label>
+    </div>
+    <div class="setting-row">
+      <label class="toggle">
+        <input type="checkbox" id="setGrammar" />
+        <span>grammar tier (local LanguageTool)</span>
+      </label>
+    </div>
+    <div class="setting-row">
+      <label class="toggle">
+        <input type="checkbox" id="setGec" />
+        <span>learned-correction tier (local, opt-in; inert without a model)</span>
+      </label>
+    </div>
+
+    <h3 class="settings-h">Muted rules</h3>
+    <div id="mutedList" class="muted-list dim">none</div>
+
+    <div id="settingsMsg" class="dim pad"></div>
+  </section>
+
+  <!-- ============ HEALTH ============ -->
+  <section class="tabpane hidden" id="pane-health">
+    <p class="dim pad">Which checking tiers are actually running. A tier that
+    is off says why and what fixes it — silence never means broken.</p>
+    <div id="healthList"></div>
+    <div class="controls">
+      <button id="probeBtn" class="primary alt">Test grammar engine</button>
+    </div>
+    <div id="healthMsg" class="dim pad"></div>
+  </section>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>

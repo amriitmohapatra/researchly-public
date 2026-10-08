@@ -1,0 +1,16 @@
+spacy>=3.7
+symspellpy>=6.9
+pytest>=8.0
+tomli>=2.0; python_version < "3.11"
+pygls>=1.3,<2        # language server (VS Code/Positron/Neovim integration)
+# after installing: python -m spacy download en_core_web_sm
+# Grammar tier (agreement, articles, verb forms). Needs a Java 17+ runtime;
+# Researchly finds one even when Homebrew installed it keg-only, and says so
+# clearly when there isn't one. This used to be commented out, which is how
+# the tier came to be silently absent for an entire release.
+language-tool-python>=2.9
+# File uploads (researchly.ingest, S2). pylatexenc parses LaTeX for masking
+# and never executes it; defusedxml reads .docx XML with entity expansion
+# and DTDs refused. Licences: pylatexenc MIT, defusedxml PSF-2.0.
+pylatexenc>=2.10,<3
+defusedxml>=0.7,<1

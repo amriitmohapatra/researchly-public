@@ -1,0 +1,2708 @@
+# ml/realdocs/manifest.yaml - real-document test bench (P29; seeds S5a)
+#
+# One entry per document. Text is fetched at run time in CI; never committed.
+# Only metadata lives here (ids, titles, licences, evidence) - no article text,
+# abstracts or excerpts. Registry entries: ml/datasets.yaml (realdocs-*).
+# Human summary, queries and exclusions: ml/realdocs/SOURCES.md.
+#
+# Built 2026-10-03 by the corpus builder. Licence rule (ml/datasets.yaml, D2):
+#   CC-BY-* / CC0-1.0     -> permitted_use [ci_eval, train_experimental]
+#   any NC or ND licence  -> [ci_eval] only
+#   test-file (software-repo test documents) -> [ci_eval] only
+#
+# discipline vocabulary: epidemiology (infectious-disease epidemiology and
+#   modelling), public-health, clinical-medicine, molecular-biology,
+#   ecology-evolution, physical-earth-sciences, engineering,
+#   computational-statistics, social-sciences, humanities, none
+#
+# URL patterns the harness must handle:
+#   europepmc jats   .../rest/{PMCID}/fullTextXML -> JATS XML (application/xml)
+#   europepmc docx   .../rest/{PMCID}/supplementaryFiles -> a ZIP of all
+#                    supplementary files; extract the members matching notes "pick:"
+#   biorxiv/medrxiv  jatsxml URL from the bioRxiv API (.../content/early/.../*.source.xml)
+#   github latex     https://github.com/{owner}/{repo}/archive/{sha}.tar.gz ->
+#                    gzip tarball, top-level dir {repo}-{sha}/; main file in notes "main:"
+#   github docx      raw.githubusercontent.com/{owner}/{repo}/{sha}/{path} -> the file
+
+version: 1
+items:
+
+  # ---- PMC Open Access full text (JATS): 115 ----
+  - id: pmc-PMC11809794
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11809794/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "RSero: A user-friendly R package to reconstruct pathogen circulation history from seroprevalence studies."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39899643; doi:10.1371/journal.pcbi.1012777; type: research article"
+  - id: pmc-PMC12002527
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002527/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Fitting dynamic measles models to subnational case notification data from Ethiopia: Methodological challenges and key considerations."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40238774; doi:10.1371/journal.pcbi.1012922; type: research article"
+  - id: pmc-PMC12040226
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12040226/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Estimating Re and overdispersion in secondary cases from the size of identical sequence clusters of SARS-CoV-2."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40233303; doi:10.1371/journal.pcbi.1012960; type: research article"
+  - id: pmc-PMC12052207
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12052207/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Modelling transmission thresholds and hypoendemic stability for onchocerciasis elimination."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40258021; doi:10.1371/journal.pcbi.1013026; type: research article"
+  - id: pmc-PMC12173404
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12173404/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Vaccination strategies, public health impact and cost-effectiveness of dengue vaccine TAK-003: A modeling case study in Thailand."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Med; PMID 40526690; doi:10.1371/journal.pmed.1004631; type: research article"
+  - id: pmc-PMC12201661
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12201661/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Uncovering the impact of randomness in HIV hotspot formation: A mathematical modeling study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40523005; doi:10.1371/journal.pcbi.1013178; type: research article"
+  - id: pmc-PMC12327647
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12327647/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Multitask deep learning for the emulation and calibration of an agent-based malaria transmission model."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40743314; doi:10.1371/journal.pcbi.1013330; type: research article"
+  - id: pmc-PMC12377563
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12377563/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Effects of recombination on multi-drug resistance evolution in Plasmodium falciparum malaria."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40853961; doi:10.1371/journal.pcbi.1013401; type: research article"
+  - id: pmc-PMC12410880
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12410880/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Evaluating COVID-19 vaccination policy in Québec (Canada) using a data-driven dynamic transmission model."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40853999; doi:10.1371/journal.pcbi.1013207; type: research article"
+  - id: pmc-PMC12459772
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12459772/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Estimating the effectiveness of non-pharmaceutical interventions against COVID-19 transmission in the Netherlands."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40961087; doi:10.1371/journal.pcbi.1013502; type: research article"
+  - id: pmc-PMC12469245
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12469245/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Optimizing crop varietal mixtures for viral disease management: A case study on cassava virus epidemics."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 40966299; doi:10.1371/journal.pcbi.1012842; type: research article"
+  - id: pmc-PMC12507252
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12507252/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "A Bayesian model for repeated cross-sectional epidemic prevalence survey data."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 41042801; doi:10.1371/journal.pcbi.1013515; type: research article"
+  - id: pmc-PMC12507262
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12507262/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Coupling plankton and cholera dynamics: Insights into outbreak prediction and practical disease management."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 41021637; doi:10.1371/journal.pcbi.1013523; type: research article"
+  - id: pmc-PMC12539749
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12539749/fullTextXML
+    licence: CC0-1.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'made available under the Creative Commons CC0 public domain dedication'"
+    discipline: epidemiology
+    title: "Transmission thresholds for the spread of infections in healthcare facilities."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 41091813; doi:10.1371/journal.pcbi.1013577; type: research article"
+  - id: pmc-PMC12614531
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12614531/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Incorporating human mobility to enhance epidemic response and estimate real-time reproduction numbers."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 41231844; doi:10.1371/journal.pcbi.1013642; type: research article"
+  - id: pmc-PMC12668479
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12668479/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Factors associated with phylogenetic clustering of hepatitis C virus, mainly among people who inject drugs who access HIV prevention services in South Africa, 2016-2017."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41325361; doi:10.1371/journal.pone.0336614; type: research article"
+  - id: pmc-PMC12700434
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12700434/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Heterogeneous impacts of HIV pre-exposure prophylaxis (PrEP) on drug resistance and phylogenetic cluster transmission dynamics in British Columbia, Canada: A retrospective cohort and simulation study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Med; PMID 41364728; doi:10.1371/journal.pmed.1004827; type: research article"
+  - id: pmc-PMC11581393
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11581393/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "EpiFusion: Joint inference of the effective reproduction number by integrating phylodynamic and epidemiological modelling with particle filtering."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39527637; doi:10.1371/journal.pcbi.1012528; type: research article"
+  - id: pmc-PMC11614247
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11614247/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Efficient modelling of infectious diseases in wildlife: A case study of bovine tuberculosis in wild badgers."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39561196; doi:10.1371/journal.pcbi.1012592; type: research article"
+  - id: pmc-PMC11616887
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11616887/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "A framework for counterfactual analysis, strategy evaluation, and control of epidemics using reproduction number estimates."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39565799; doi:10.1371/journal.pcbi.1012569; type: research article"
+  - id: pmc-PMC11620354
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11620354/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Research progress toward arthropod salivary protein vaccine development for vector-borne infectious diseases."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Negl Trop Dis; PMID 39636798; doi:10.1371/journal.pntd.0012618; type: Review"
+  - id: pmc-PMC11620375
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11620375/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Public surface disinfection every 2 hours can reduce the infection risk of norovirus in airports up to 83."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39636806; doi:10.1371/journal.pcbi.1012561; type: research article"
+  - id: pmc-PMC11637441
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11637441/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Human intestinal nematode infections in Sri Lanka: A scoping review."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Negl Trop Dis; PMID 39621776; doi:10.1371/journal.pntd.0012689; type: Scoping Review"
+  - id: pmc-PMC11649097
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11649097/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Climate change and Vibrio vulnificus dynamics: A blueprint for infectious diseases."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Pathog; PMID 39680617; doi:10.1371/journal.ppat.1012767; type: Review"
+  - id: pmc-PMC11658705
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11658705/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Unravelling the challenge of cotrimoxazole and rifampin resistance in B. melitensis and B. abortus: A systematic review and meta-analysis."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Negl Trop Dis; PMID 39621798; doi:10.1371/journal.pntd.0012630; type: Systematic Review, Meta-Analysis"
+  - id: pmc-PMC11670977
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11670977/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Cost of dengue in Colombia: A systematic review."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Negl Trop Dis; PMID 39666757; doi:10.1371/journal.pntd.0012718; type: Systematic Review"
+  - id: pmc-PMC11706484
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11706484/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Estimating the time-varying effective reproduction number via Cycle Threshold-based Transformer."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 39715259; doi:10.1371/journal.pcbi.1012694; type: research article"
+  - id: pmc-PMC11753665
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11753665/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Efficacy of vaccines based on chimeric or multiepitope antigens for protection against visceral leishmaniasis: A systematic review."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Negl Trop Dis; PMID 39739955; doi:10.1371/journal.pntd.0012757; type: Systematic Review"
+  - id: pmc-PMC10703282
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10703282/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "A Bayesian inference method to estimate transmission trees with multiple introductions; applied to SARS-CoV-2 in Dutch mink farms."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 38011266; doi:10.1371/journal.pcbi.1010928; type: research article"
+  - id: pmc-PMC8975162
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8975162/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Short-term and long-term epidemiological impacts of sustained vector control in various dengue endemic settings: A modelling study."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35363786; doi:10.1371/journal.pcbi.1009979; type: research article"
+  - id: pmc-PMC9067655
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9067655/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Updating age-specific contact structures to match evolving demography in a dynamic mathematical model of tuberculosis vaccination."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35452459; doi:10.1371/journal.pcbi.1010002; type: research article"
+  - id: pmc-PMC9182318
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9182318/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Inference and dynamic simulation of malaria using a simple climate-driven entomological model of malaria transmission."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35679241; doi:10.1371/journal.pcbi.1010161; type: research article"
+  - id: pmc-PMC9262224
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9262224/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Evidence for influenza and RSV interaction from 10 years of enhanced surveillance in Nha Trang, Vietnam, a modelling study."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35749561; doi:10.1371/journal.pcbi.1010234; type: research article"
+  - id: pmc-PMC9426877
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9426877/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Habitat loss exacerbates pathogen spread: An Agent-based model of avian influenza infection in migratory waterfowl."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35981006; doi:10.1371/journal.pcbi.1009577; type: research article"
+  - id: pmc-PMC12700414
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12700414/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "A qualitative evaluation of a global surgery course within the University of Cape Town's master of public health curriculum: A cross-sectional study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLOS Glob Public Health; PMID 41385497; doi:10.1371/journal.pgph.0005646; type: research article"
+  - id: pmc-PMC12714271
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714271/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Distribution of pediatric intensive care beds in Brazil: Regional inequalities and implications for equity in the public health system."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41411320; doi:10.1371/journal.pone.0339186; type: research article"
+  - id: pmc-PMC12721531
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12721531/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Sex disparities in adult obesity prevalence across 47 African countries: A cross-sectional descriptive study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41428658; doi:10.1371/journal.pone.0339595; type: research article"
+  - id: pmc-PMC12725616
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725616/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Understanding women's care experiences in public health facilities in a conflict-affected area of Nigeria."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLOS Glob Public Health; PMID 41433253; doi:10.1371/journal.pgph.0004563; type: research article"
+  - id: pmc-PMC12753068
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12753068/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Child public health interventions for conflict-affected populations: A systematic review."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLOS Glob Public Health; PMID 41468507; doi:10.1371/journal.pgph.0004880; type: research article"
+  - id: pmc-PMC12755740
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755740/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Access and utilization of e-learning on tropical medicine at higher education institutions in Indonesia: A mixed-methods study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474805; doi:10.1371/journal.pone.0335664; type: research article"
+  - id: pmc-PMC12755813
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755813/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Impacts of continuing education for health professionals in primary health care: A scoping review."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474734; doi:10.1371/journal.pone.0339980; type: Scoping Review"
+  - id: pmc-PMC10752512
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10752512/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Social media platforms generate billions of dollars in revenue from U.S. youth: Findings from a simulated revenue model."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 38150418; doi:10.1371/journal.pone.0295337; type: research article"
+  - id: pmc-PMC10752533
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10752533/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Time trends in self-reported depressive symptoms, prescription of antidepressants, sedatives and hypnotics and the emergence of social media among Norwegian adolescents."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 38150420; doi:10.1371/journal.pone.0295384; type: research article"
+  - id: pmc-PMC12677456
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677456/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Association of hydralazine use with risk of hematologic neoplasms in patients with hypertension: A nationwide population-based cohort study in Taiwan."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Med; PMID 41343491; doi:10.1371/journal.pmed.1004646; type: research article"
+  - id: pmc-PMC12677572
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677572/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Elevated blood urea nitrogen-to-creatinine ratio predicts short-term mortality in intensive care unit patients with ischemic stroke: Evidence from a multicenter cohort."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41343560; doi:10.1371/journal.pone.0337807; type: research article"
+  - id: pmc-PMC12677787
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677787/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Risk of cardiovascular disease and death in patients with breast cancer receiving anthracycline-based therapy: A retrospective cohort study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41343588; doi:10.1371/journal.pone.0335083; type: research article"
+  - id: pmc-PMC12685183
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685183/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "A multi-mineral intervention to improve disease-related and mechanistic biomarkers in ulcerative colitis patients: Results from a randomized trial."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41359652; doi:10.1371/journal.pone.0337408; type: Randomized Controlled Trial"
+  - id: pmc-PMC12685199
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685199/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Coaching doctors to improve ethical decision-making in adult hospitalized patients potentially receiving excessive treatment: Process evaluation study of the CODE intervention in doctors and nurses working in ten acute hospital wards."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41359551; doi:10.1371/journal.pone.0337801; type: Randomized Controlled Trial"
+  - id: pmc-PMC12707644
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12707644/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Effect of obesity and exercise training on circulating lipids in American Indian adolescents."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41401179; doi:10.1371/journal.pone.0338547; type: research article"
+  - id: pmc-PMC12711039
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12711039/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Real-world optimization of tunnel lengths in tunneled peripherally inserted central catheters for cancer patients: A multi-center retrospective cohort study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41406176; doi:10.1371/journal.pone.0338692; type: research article"
+  - id: pmc-PMC12714274
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714274/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Early skeletal muscle loss and clinical outcomes in critically ill patients in the medical intensive care unit: A retrospective cohort study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41411233; doi:10.1371/journal.pone.0338315; type: research article"
+  - id: pmc-PMC12716735
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716735/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Association of the PaO2/RDW ratio with 7-day mortality and risk of early invasive mechanical ventilation in ICU patients with delirium associated with ARDS: A retrospective cohort study from the MIMIC-IV database."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417850; doi:10.1371/journal.pone.0339390; type: research article"
+  - id: pmc-PMC12716756
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716756/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Evaluating the efficacy of intragastric botulinum toxin a injections with two different quantities and sites for obesity."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417831; doi:10.1371/journal.pone.0339259; type: research article"
+  - id: pmc-PMC12716772
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716772/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "ACEF score as a predictor of new-onset atrial fibrillation in patients with ST-elevation myocardial infarction: A retrospective cohort study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417833; doi:10.1371/journal.pone.0339483; type: research article"
+  - id: pmc-PMC12742746
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742746/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Comparing the effectiveness of emotion regulation therapy and cognitive behavioral therapy on treatment adherence in hemodialysis patients: A randomized controlled clinical trial."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41452823; doi:10.1371/journal.pone.0339162; type: Randomized Controlled Trial"
+  - id: pmc-PMC12755753
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755753/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Exploring the molecular link between obstructive sleep apnea and interstitial cystitis/bladder pain syndrome: A bioinformatics and machine learning study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474729; doi:10.1371/journal.pone.0339824; type: research article"
+  - id: pmc-PMC12680179
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12680179/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Exposure to polystyrene nanoparticles induce disruption of mitochondrial homeostasis and impairs trophoblast cell invasion and migration via MDM2/ROCK1 pathway."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41348661; doi:10.1371/journal.pone.0337568; type: research article"
+  - id: pmc-PMC12725660
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725660/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Evaluation of the insulin-dependent and -independent hypoglycemic effects and understanding their breakdown in the progression of obesity using mice."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41433229; doi:10.1371/journal.pone.0337739; type: research article"
+  - id: pmc-PMC12752983
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12752983/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Identification of PANoptosis-associated genes in hepatic ischemia-reperfusion injury by integrated bioinformatics analysis and machine learning."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41468372; doi:10.1371/journal.pone.0339651; type: research article"
+  - id: pmc-PMC12753105
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12753105/fullTextXML
+    licence: CC0-1.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence URL https://creativecommons.org/publicdomain/zero/1.0/"
+    discipline: molecular-biology
+    title: "Evolution of a fuzzy ribonucleoprotein complex in viral assembly."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "Elife; PMID 41468288; doi:10.7554/eLife.108922; type: research article"
+  - id: pmc-PMC9020725
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9020725/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: molecular-biology
+    title: "A particle-based computational model to analyse remodelling of the red blood cell cytoskeleton during malaria infections."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 35394995; doi:10.1371/journal.pcbi.1009509; type: research article"
+  - id: pmc-PMC9757564
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9757564/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Exploring the genetic architecture of protein secretion in Komagataella phaffii (Pichia pastoris) for biotechnology applications."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Biol; PMID 36525401; doi:10.1371/journal.pbio.3001911; type: research article"
+  - id: pmc-PMC9779669
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9779669/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Transcription factor binding process is the primary driver of noise in gene expression."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Genet; PMID 36508455; doi:10.1371/journal.pgen.1010535; type: research article"
+  - id: pmc-PMC9797058
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9797058/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Genome wide CRISPR screen for Pasteurella multocida toxin (PMT) binding proteins reveals LDL Receptor Related Protein 1 (LRP1) as crucial cellular receptor."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Pathog; PMID 36516199; doi:10.1371/journal.ppat.1010781; type: research article"
+  - id: pmc-PMC9799308
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9799308/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Distinct signaling signatures drive compensatory proliferation via S-phase acceleration."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Genet; PMID 36520882; doi:10.1371/journal.pgen.1010516; type: research article"
+  - id: pmc-PMC9810164
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9810164/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Antibody epitope profiling of the KSHV LANA protein using VirScan."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Pathog; PMID 36534707; doi:10.1371/journal.ppat.1011033; type: research article"
+  - id: pmc-PMC9822104
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9822104/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Safeguarding Drosophila female germ cell identity depends on an H3K9me3 mini domain guided by a ZAD zinc finger protein."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Genet; PMID 36548300; doi:10.1371/journal.pgen.1010568; type: research article"
+  - id: pmc-PMC9829174
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9829174/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Tobacco mosaic virus movement protein complements a Potato spindle tuber viroid RNA mutant impaired for mesophyll entry but not mutants unable to enter the phloem."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Pathog; PMID 36574436; doi:10.1371/journal.ppat.1011062; type: research article"
+  - id: pmc-PMC9829178
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9829178/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "The circadian E3 ligase FBXL21 regulates myoblast differentiation and sarcomere architecture via MYOZ1 ubiquitination and NFAT signaling."
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Genet; PMID 36574402; doi:10.1371/journal.pgen.1010574; type: research article"
+  - id: pmc-PMC12637941
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12637941/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Using biodiversity features to promote an Ecosystem-Based Conservation framework in terrestrial ecosystems."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41270085; doi:10.1371/journal.pone.0336705; type: research article"
+  - id: pmc-PMC12646416
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12646416/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Evolving life-history traits promote biodiversity via eco-evolutionary feedback mechanisms."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Biol; PMID 41223236; doi:10.1371/journal.pbio.3003492; type: research article"
+  - id: pmc-PMC12677482
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677482/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Multi-locus phylogenetic network analysis of Ampelomyces mycoparasites isolated from diverse powdery mildews in Australia and the generation of two de novo genome assemblies."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41343545; doi:10.1371/journal.pone.0322842; type: research article"
+  - id: pmc-PMC12680229
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12680229/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Chloroplast genome analysis and phylogenetic position of Polygonatum sinopubescens and comparison with related species."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41348693; doi:10.1371/journal.pone.0338103; type: research article"
+  - id: pmc-PMC12711051
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12711051/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Empirically calibrated simulations reveal the limits of phenotypic clustering algorithms for biodiversity assessment in data-scarce crops."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41406127; doi:10.1371/journal.pone.0329254; type: research article"
+  - id: pmc-PMC12714249
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714249/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Subtidal kelp habitat classification at the Isles of Shoals: An integrative Random Forest approach using bathymetry and Landsat imagery."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41411266; doi:10.1371/journal.pone.0338218; type: research article"
+  - id: pmc-PMC12716747
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716747/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Identifying and assessing nonlinear drivers of capelin and Atlantic cod population dynamics using empirical dynamic modelling (EDM) scenario exploration."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417790; doi:10.1371/journal.pone.0339407; type: research article"
+  - id: pmc-PMC12716759
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716759/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Dual niche modeling with GEE and SHAP for predicting habitat shifts of Haloxylon ammodendron and Cistanche deserticola under climate change."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417741; doi:10.1371/journal.pone.0338809; type: research article"
+  - id: pmc-PMC12725570
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725570/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "From fragmentation to resilience: Connectivity and habitat diversity as drivers of fish persistence in California watersheds."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41433325; doi:10.1371/journal.pone.0339212; type: research article"
+  - id: pmc-PMC12725590
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725590/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Investigating adaptation to environmental variability in forest trees through molecular phylogenetic analysis."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41433287; doi:10.1371/journal.pone.0338893; type: research article"
+  - id: pmc-PMC12755884
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755884/fullTextXML
+    licence: CC0-1.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence URL https://creativecommons.org/publicdomain/zero/1.0/"
+    discipline: ecology-evolution
+    title: "Hybridization breaks species barriers in long-term coevolution of a cyanobacterial population."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "Elife; PMID 41474552; doi:10.7554/eLife.90849; type: research article"
+  - id: pmc-PMC11649078
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11649078/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Precipitation in July maximizes total above-ground productivity of the desert steppe in Inner Mongolia, China."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39680535; doi:10.1371/journal.pone.0314983; type: research article"
+  - id: pmc-PMC11654923
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11654923/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Decay experiments and microbial community analysis of water lily leaf biofilms: Sediment effects on leaf preservation potential."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39693331; doi:10.1371/journal.pone.0315656; type: research article"
+  - id: pmc-PMC12677453
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677453/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Effect of zinc oxide nanoparticles (nZnO) on antioxidant defense, lignin metabolism and cadmium subcellular distribution in lettuce (Lactuca sativa L) under low-dose cadmium stress (hormesis)."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41343535; doi:10.1371/journal.pone.0337953; type: research article"
+  - id: pmc-PMC12680205
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12680205/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Study on the spatiotemporal variation and driving factors of soil erosion based on sampling method in the loess hilly area of western Henan Province, China."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41348758; doi:10.1371/journal.pone.0338185; type: research article"
+  - id: pmc-PMC12680249
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12680249/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Optimizing solar irradiance forecasting: ANN models enhanced with ADAM and Cuckoo search algorithm."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41348835; doi:10.1371/journal.pone.0335342; type: research article"
+  - id: pmc-PMC12755734
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755734/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Impact of injection scheduling on CO2 migration and trapping efficiency in the Johansen formation."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474780; doi:10.1371/journal.pone.0340048; type: research article"
+  - id: pmc-PMC12755814
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755814/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Green synthesis of zinc oxide nanoparticles using Catunaregam spinosa (Thunb.) triveng for biologicals applications."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474809; doi:10.1371/journal.pone.0320475; type: research article"
+  - id: pmc-PMC11620444
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11620444/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Ambient noise levels of seismic stations located in urban agglomerations in central Inner Mongolia, China."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39636840; doi:10.1371/journal.pone.0315004; type: research article"
+  - id: pmc-PMC11651601
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11651601/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Development of a new methodology for the determination of PET microplastics in sediment, based on microwave-assisted acid digestion."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39689124; doi:10.1371/journal.pone.0314520; type: research article"
+  - id: pmc-PMC11666065
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11666065/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Evaluation of atmospheric correction algorithms for salt lake water assessment: Accuracy, band-specific effects, and sensor consistency."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39715154; doi:10.1371/journal.pone.0315837; type: research article"
+  - id: pmc-PMC11670950
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11670950/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Change in sediment transport regime of the Keelung River in Taiwan induced by the operation of Yuanshantze flood diversion tunnel."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39724184; doi:10.1371/journal.pone.0311551; type: research article"
+  - id: pmc-PMC11687915
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11687915/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: physical-earth-sciences
+    title: "Evolutionary analysis of slope direction deformation in the Gaojiawan landslide based on time-series InSAR and Kalman filtering."
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 39739968; doi:10.1371/journal.pone.0316100; type: research article"
+  - id: pmc-PMC12704861
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12704861/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: engineering
+    title: "A fast regulation algorithm for low voltage in regional grids with high uncertainty and high penetration of wind and solar loads at the grid end."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41397030; doi:10.1371/journal.pone.0328057; type: research article"
+  - id: pmc-PMC12752941
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12752941/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: engineering
+    title: "An integrated analysis method for critical human factors and paths in hazardous chemical storage accidents based on association rule mining and bayesian networks."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41468371; doi:10.1371/journal.pone.0338452; type: research article"
+  - id: pmc-PMC12716705
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716705/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "Machine learning-based risk prediction model for cognitive dysfunction in elderly individuals."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417812; doi:10.1371/journal.pone.0336058; type: research article"
+  - id: pmc-PMC12742763
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742763/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "Machine learning-based prediction of glioma grading."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41452825; doi:10.1371/journal.pone.0314831; type: research article"
+  - id: pmc-PMC12742797
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742797/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "Enhanced machine learning and hybrid ensemble approaches for Coronary Heart Disease prediction."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41452880; doi:10.1371/journal.pone.0328338; type: research article"
+  - id: pmc-PMC12747338
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12747338/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "A cost effective machine learning based network intrusion detection system using Raspberry Pi for real time analysis."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41460890; doi:10.1371/journal.pone.0331123; type: research article"
+  - id: pmc-PMC12747363
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12747363/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "Lymphocytes and related inflammatory factors as predictors of metabolic syndrome risk in shift workers: A machine learning approach based on large-scale population data."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41460783; doi:10.1371/journal.pone.0339673; type: research article"
+  - id: pmc-PMC12755765
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755765/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "A hybrid machine learning model for pulmonary tuberculosis forecasting of Chongqing with adjacent-region data."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474718; doi:10.1371/journal.pone.0339453; type: research article"
+  - id: pmc-PMC12755828
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755828/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "Trigonometric function transformation and its application in software reliability modeling."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474778; doi:10.1371/journal.pone.0339286; type: research article"
+  - id: pmc-PMC10511070
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10511070/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "AlignStatPlot: An R package and online tool for robust sequence alignment statistics and innovative visualization of big data."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 37729135; doi:10.1371/journal.pone.0291204; type: research article"
+  - id: pmc-PMC10569555
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10569555/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "CARRoT: R-package for predictive modelling by means of regression, adjusted for multiple regularisation methods."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 37824552; doi:10.1371/journal.pone.0292597; type: research article"
+  - id: pmc-PMC10721171
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10721171/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "resevol: An R package for spatially explicit models of pesticide resistance given evolving pest genomes."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS Comput Biol; PMID 38048359; doi:10.1371/journal.pcbi.1011691; type: research article"
+  - id: pmc-PMC10734972
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10734972/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: computational-statistics
+    title: "OssaNMA: An R package for using information from network meta-analyses to optimize the power and sample allocation of a new two-arm trial."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 38128003; doi:10.1371/journal.pone.0296020; type: research article"
+  - id: pmc-PMC12714252
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714252/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Constraints, mechanisms, and strategies for industry-education integration in vocational education: An empirical study."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41411328; doi:10.1371/journal.pone.0339158; type: research article"
+  - id: pmc-PMC12714256
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714256/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Uncovering the mechanism linking education expectation and suicide ideation among students in tertiary education: The mediating role of academic burnout, psychache, and hopelessness."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41411340; doi:10.1371/journal.pone.0337831; type: research article"
+  - id: pmc-PMC12716723
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716723/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Ethical compliance and institutional policy support for artificial intelligence integration in African TVET Education: A structural equation modeling approach."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417785; doi:10.1371/journal.pone.0335747; type: research article"
+  - id: pmc-PMC12716788
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716788/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Environmental education positively impacts the perceptions of learners towards bats in schools in a low socio-economic area in South Africa."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41417819; doi:10.1371/journal.pone.0335652; type: research article"
+  - id: pmc-PMC12721513
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12721513/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "How does agricultural insurance affect income inequality within farmers? Based on survey data from Shandong Province, China."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41428677; doi:10.1371/journal.pone.0337529; type: research article"
+  - id: pmc-PMC12747356
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12747356/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Are climate change perceptions related with plastic policy support? Effects of climate change skepticism, guilt, and efficacy on the acceptance of the plastic tax."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41460928; doi:10.1371/journal.pone.0337327; type: research article"
+  - id: pmc-PMC12755793
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755793/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "High performance work system and innovative work behaviour: A moderated mediation analysis of knowledge sharing and employee creativity in Nigerian higher education institutions."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474816; doi:10.1371/journal.pone.0338031; type: research article"
+  - id: pmc-PMC12755834
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755834/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Unmasking the pathways to workplace incivility: A mediated moderation model of despotic leadership, workload stress, and distributive justice in higher education."
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 41474652; doi:10.1371/journal.pone.0337687; type: research article"
+  - id: pmc-PMC10732387
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10732387/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "How does perceptions of social justice affect farmers' political participation?-Evidence from China."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 38117839; doi:10.1371/journal.pone.0295792; type: research article"
+  - id: pmc-PMC10752534
+    kind: article
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10752534/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Predictive modeling of consumer purchase behavior on social media: Integrating theory of planned behavior and machine learning for actionable insights."
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "PLoS One; PMID 38150431; doi:10.1371/journal.pone.0296336; type: research article"
+
+  # ---- PMC Open Access supplementary .docx: 20 ----
+  - id: pmcsupp-PMC12173404
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12173404/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Vaccination strategies, public health impact and cost-effectiveness of dengue vaccine TAK-003: A modeling case study in Thailand. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 File 'Model definition', S3 File 'Model results' (prose model appendix); PLoS Med; doi:10.1371/journal.pmed.1004631"
+  - id: pmcsupp-PMC12002527
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002527/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Fitting dynamic measles models to subnational case notification data from Ethiopia: Methodological challenges and key considerations. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Text 'additional supplemental methods' (prose methods appendix); PLoS Comput Biol; doi:10.1371/journal.pcbi.1012922"
+  - id: pmcsupp-PMC11581393
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11581393/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "EpiFusion: Joint inference of the effective reproduction number by integrating phylodynamic and epidemiological modelling with particle filtering. (supplementary .docx)"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Text, S3 Text (technical appendices: importance sampling, parameterisation); PLoS Comput Biol; doi:10.1371/journal.pcbi.1012528"
+  - id: pmcsupp-PMC9262224
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9262224/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03 (source PMC): licence 'CC BY 4.0', https://creativecommons.org/licenses/by/4.0/"
+    discipline: epidemiology
+    title: "Evidence for influenza and RSV interaction from 10 years of enhanced surveillance in Nha Trang, Vietnam, a modelling study. (supplementary .docx)"
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Text 'Further technical details and sensitivity analyses' (prose appendix); PLoS Comput Biol; doi:10.1371/journal.pcbi.1010234"
+  - id: pmcsupp-PMC12714252
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714252/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Constraints, mechanisms, and strategies for industry-education integration in vocational education: An empirical study. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Text 'Score statistics of potential constraining factors' (tables); PLoS One; doi:10.1371/journal.pone.0339158"
+  - id: pmcsupp-PMC12755793
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12755793/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "High performance work system and innovative work behaviour: A moderated mediation analysis of knowledge sharing and employee creativity in Nigerian higher education institutions. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 File 'Appendix A. Research instruments' (questionnaire); PLoS One; doi:10.1371/journal.pone.0338031"
+  - id: pmcsupp-PMC12716788
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716788/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: social-sciences
+    title: "Environmental education positively impacts the perceptions of learners towards bats in schools in a low socio-economic area in South Africa. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Appendix (statement categories), S1 File (details of a children's book used); PLoS One; doi:10.1371/journal.pone.0335652"
+  - id: pmcsupp-PMC12753068
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12753068/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Child public health interventions for conflict-affected populations: A systematic review. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Text 'PRISMA checklist' (structured checklist); PLOS Glob Public Health; doi:10.1371/journal.pgph.0004880"
+  - id: pmcsupp-PMC11620375
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11620375/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: epidemiology
+    title: "Public surface disinfection every 2 hours can reduce the infection risk of norovirus in airports up to 83. (supplementary .docx)"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1, S3, S5 Table (data tables in Word); PLoS Comput Biol; doi:10.1371/journal.pcbi.1012561"
+  - id: pmcsupp-PMC12742746
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12742746/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Comparing the effectiveness of emotion regulation therapy and cognitive behavioral therapy on treatment adherence in hemodialysis patients: A randomized controlled clinical trial. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S2 File 'Scoring questions', S4 File 'CONSORT 2010' checklist; PLoS One; doi:10.1371/journal.pone.0339162"
+  - id: pmcsupp-PMC12700414
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12700414/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "A qualitative evaluation of a global surgery course within the University of Cape Town's master of public health curriculum: A cross-sectional study. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Appendix 'Interview Guide', S1 Transcripts 'Anonymized Participant Interview Transcripts' (spoken-language prose, published by the authors under CC BY); PLOS Glob Public Health; doi:10.1371/journal.pgph.0005646"
+  - id: pmcsupp-PMC12677456
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677456/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Association of hydralazine use with risk of hematologic neoplasms in patients with hypertension: A nationwide population-based cohort study in Taiwan. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Checklist (reporting checklist); PLoS Med; doi:10.1371/journal.pmed.1004646"
+  - id: pmcsupp-PMC12714274
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12714274/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Early skeletal muscle loss and clinical outcomes in critically ill patients in the medical intensive care unit: A retrospective cohort study. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1, S3 Table (laboratory findings; regression tables); PLoS One; doi:10.1371/journal.pone.0338315"
+  - id: pmcsupp-PMC12725616
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725616/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: public-health
+    title: "Understanding women's care experiences in public health facilities in a conflict-affected area of Nigeria. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 File 'Exit Survey with women', S1 Checklist 'Inclusivity in global research'; PLOS Glob Public Health; doi:10.1371/journal.pgph.0004563"
+  - id: pmcsupp-PMC12725570
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12725570/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "From fragmentation to resilience: Connectivity and habitat diversity as drivers of fish persistence in California watersheds. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1, S2, S5, S6 Table (Word tables); PLoS One; doi:10.1371/journal.pone.0339212"
+  - id: pmcsupp-PMC12716747
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12716747/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: ecology-evolution
+    title: "Identifying and assessing nonlinear drivers of capelin and Atlantic cod population dynamics using empirical dynamic modelling (EDM) scenario exploration. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 File 'Raw data and individual scenario exploration'; PLoS One; doi:10.1371/journal.pone.0339407"
+  - id: pmcsupp-PMC12685199
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12685199/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Coaching doctors to improve ethical decision-making in adult hospitalized patients potentially receiving excessive treatment: Process evaluation study of the CODE intervention in doctors and nurses working in ten acute hospital wards. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 File 'English translation EC' (translated intervention material); PLoS One; doi:10.1371/journal.pone.0337801"
+  - id: pmcsupp-PMC12677787
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677787/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Risk of cardiovascular disease and death in patients with breast cancer receiving anthracycline-based therapy: A retrospective cohort study. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1, S3, S5 Table (Word tables incl. outcome definitions); PLoS One; doi:10.1371/journal.pone.0335083"
+  - id: pmcsupp-PMC12677572
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12677572/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: clinical-medicine
+    title: "Elevated blood urea nitrogen-to-creatinine ratio predicts short-term mortality in intensive care unit patients with ischemic stroke: Evidence from a multicenter cohort. (supplementary .docx)"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1-S4, S6 Table, S1 Fig as DOCX (tables and an embedded figure); PLoS One; doi:10.1371/journal.pone.0337807"
+  - id: pmcsupp-PMC9799308
+    kind: article
+    source: europepmc
+    format: docx
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9799308/supplementaryFiles
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-03: statement 'open access article distributed under the terms of the Creative Commons Attribution License' (version not in the statement; CC BY 4.0 per PLOS content-licence policy, https://journals.plos.org/plosone/s/content-license)"
+    discipline: molecular-biology
+    title: "Distinct signaling signatures drive compensatory proliferation via S-phase acceleration. (supplementary .docx)"
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "pick: *.docx; DOCX presence verified in the PMC full-text record (get_full_text_article, 2026-10-03): S1 Table 'Fly strains used in this study'; PLoS Genet; doi:10.1371/journal.pgen.1010516"
+
+  # ---- bioRxiv / medRxiv preprints (JATS): 14 ----
+  - id: medrxiv-2024.03.06.24303851
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/07/2024.03.06.24303851.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Contact behaviour before, during and after the COVID-19 pandemic in the Netherlands: evidence from contact surveys in 2016-2017 and 2020-2023"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.03.06.24303851; version 1 posted 2024-03-07; not peer reviewed"
+  - id: medrxiv-2024.03.05.24303395
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/05/2024.03.05.24303395.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Epidemiology, clinical characteristics, and transmission patterns of a novel Mpox (Monkeypox) outbreak in eastern Democratic Republic of the Congo (DRC): an observational, cross-sectional cohort study"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.03.05.24303395; version 1 posted 2024-03-05; not peer reviewed"
+  - id: medrxiv-2023.08.31.23294911
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2023/09/01/2023.08.31.23294911.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Investigating the relationship between extreme weather and cryptosporidiosis and giardiasis in Colorado: a multi-decade study using distributed-lag nonlinear models"
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2023.08.31.23294911; version 1 posted 2023-09-01; not peer reviewed"
+  - id: medrxiv-2024.03.06.24303834
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/07/2024.03.06.24303834.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Estimating the impact of public health interventions on COVID mortality in the United States using reductions in influenza mortality as an indicator of non-pharmaceutical infection control"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.03.06.24303834; version 1 posted 2024-03-07; not peer reviewed"
+  - id: medrxiv-2024.03.07.24303912
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/08/2024.03.07.24303912.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: public-health
+    title: "The Association Between Parental BMI and Offspring Adiposity: A Genetically Informed Analysis of Trios"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.03.07.24303912; version 1 posted 2024-03-08; not peer reviewed"
+  - id: medrxiv-2024.03.06.24303765
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/07/2024.03.06.24303765.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: public-health
+    title: "Exploring the causal role of the human gut microbiome in endometrial cancer: a Mendelian randomization approach"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.03.06.24303765; version 1 posted 2024-03-07; not peer reviewed"
+  - id: medrxiv-2023.11.16.23298475
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2023/11/17/2023.11.16.23298475.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: public-health
+    title: "The proportion of Alzheimer disease attributable to Apolipoprotein E"
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2023.11.16.23298475; version 1 posted 2023-11-17; not peer reviewed"
+  - id: biorxiv-2024.04.11.589105
+    kind: preprint
+    source: biorxiv
+    format: jats
+    url: https://www.biorxiv.org/content/early/2024/04/15/2024.04.11.589105.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: ecology-evolution
+    title: "Effects of environmental change on population growth: monitoring time-varying carrying capacity in free-ranging spotted hyenas"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.04.11.589105; version 1 posted 2024-04-15; not peer reviewed"
+  - id: biorxiv-2024.02.09.579602
+    kind: preprint
+    source: biorxiv
+    format: jats
+    url: https://www.biorxiv.org/content/early/2024/02/12/2024.02.09.579602.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: ecology-evolution
+    title: "What unexplored means: Mapping undersampled regions in natural history collections"
+    year: 2024
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2024.02.09.579602; version 1 posted 2024-02-12; not peer reviewed"
+  - id: biorxiv-2023.10.05.560934
+    kind: preprint
+    source: biorxiv
+    format: jats
+    url: https://www.biorxiv.org/content/early/2023/10/07/2023.10.05.560934.source.xml
+    licence: CC-BY-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: ecology-evolution
+    title: "A highly resolved multiplex network reveals the structural role of insects and plants in terrestrial food webs"
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "doi:10.1101/2023.10.05.560934; version 1 posted 2023-10-07; not peer reviewed"
+  - id: medrxiv-2023.03.02.23286698
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2023/03/02/2023.03.02.23286698.source.xml
+    licence: CC-BY-ND-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by_nd' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "A novel approach for estimating vaccine efficacy for infections with multiple disease outcomes: application to a COVID-19 vaccine trial"
+    year: 2023
+    permitted_use: [ci_eval]
+    notes: "doi:10.1101/2023.03.02.23286698; version 1 posted 2023-03-02; not peer reviewed; NC/ND: evaluation only (D2)"
+  - id: medrxiv-2024.03.04.24303692
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/04/2024.03.04.24303692.source.xml
+    licence: CC-BY-NC-ND-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by_nc_nd' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Influenza virus shedding and symptoms: Dynamics and implications from a multi-season household transmission study"
+    year: 2024
+    permitted_use: [ci_eval]
+    notes: "doi:10.1101/2024.03.04.24303692; version 1 posted 2024-03-04; not peer reviewed; NC/ND: evaluation only (D2)"
+  - id: medrxiv-2024.03.06.24303781
+    kind: preprint
+    source: medrxiv
+    format: jats
+    url: https://www.medrxiv.org/content/early/2024/03/08/2024.03.06.24303781.source.xml
+    licence: CC-BY-ND-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by_nd' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: computational-statistics
+    title: "How to mitigate selection bias in COVID-19 surveys: evidence from five national cohorts"
+    year: 2024
+    permitted_use: [ci_eval]
+    notes: "doi:10.1101/2024.03.06.24303781; version 1 posted 2024-03-08; not peer reviewed; NC/ND: evaluation only (D2)"
+  - id: biorxiv-2024.01.01.573813
+    kind: preprint
+    source: biorxiv
+    format: jats
+    url: https://www.biorxiv.org/content/early/2024/01/02/2024.01.01.573813.source.xml
+    licence: CC-BY-NC-4.0
+    licence_evidence: "bioRxiv connector get_preprint 2026-10-03: license 'cc_by_nc' for v1 (API value carries no version; bioRxiv/medRxiv licence menu offers the 4.0 CC licences)"
+    discipline: epidemiology
+    title: "Transoceanic pathogen circulation in the age of sail and steam"
+    year: 2024
+    permitted_use: [ci_eval]
+    notes: "doi:10.1101/2024.01.01.573813; version 1 posted 2024-01-02; not peer reviewed; NC/ND: evaluation only (D2)"
+
+  # ---- medRxiv / bioRxiv preprints mirrored in PMC (NIH Preprint Pilot; JATS via Europe PMC): 11 ----
+  - id: pmcpreprint-PMC13596594
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13596594/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: epidemiology
+    title: "Protective association between recent insecticide-treated bed net use and falciparum malaria in three provinces of the Democratic Republic of the Congo."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "medRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42780165; doi:10.64898/2026.09.15.26363108; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13484801
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13484801/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: epidemiology
+    title: "Inferring heterogeneous transmission and community introduction of antibiotic-resistant bacteria in hospital settings."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "medRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42620202; doi:10.64898/2026.08.02.26359521; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13484830
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13484830/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: epidemiology
+    title: "Molecular Epidemiology of HIV in an African Epidemic with Declining HIV incidence but High Prevalence: A Longitudinal, Population-based Study in Uganda."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "medRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42620149; doi:10.64898/2026.08.04.26359711; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13484347
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13484347/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: epidemiology
+    title: "Investigating pathways of vancomycin-resistant (VRE) contamination and transmission in intensive care units: a prospective genomic surveillance study."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "medRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42620058; doi:10.64898/2026.07.28.26359040; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13596371
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13596371/fullTextXML
+    licence: CC0-1.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)"
+    discipline: epidemiology
+    title: "Transmission of mutated SARS-CoV-2 variants is favored by relatively prolonged infections due to delayed immunity."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42779989; doi:10.64898/2026.09.15.751875; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13484082
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13484082/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: molecular-biology
+    title: "Molecular basis for chikungunya virus recognition of a mosquito-specific receptor."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42620031; doi:10.64898/2026.07.28.741352; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13483925
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13483925/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: molecular-biology
+    title: "Phage VP882 possesses quorum-sensing-driven lytic induction and stress-mediated host growth suppression mechanisms."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42619886; doi:10.64898/2026.07.27.740977; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13484500
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13484500/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: molecular-biology
+    title: "Single-cell transcriptomics reveals a multiphasic host infection trajectory."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42620189; doi:10.64898/2026.07.29.741357; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13596262
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13596262/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: molecular-biology
+    title: "Human-specific remodeling of an endogenous retrovirus shapes structural diversity at acrocentric nucleolar organizer regions."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42779673; doi:10.64898/2026.09.11.751073; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13596531
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13596531/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: neuroscience
+    title: "Anatomical and functional organisation of the cholinergic nervous system in the tunicate."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42779898; doi:10.64898/2026.09.10.750344; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  - id: pmcpreprint-PMC13483939
+    kind: preprint
+    source: europepmc
+    format: jats
+    url: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13483939/fullTextXML
+    licence: CC-BY-4.0
+    licence_evidence: "PubMed get_copyright_status 2026-10-04: PMC licence CC BY 4.0"
+    discipline: neuroscience
+    title: "Early Amyloid-beta Toxicity Disrupts Nervous System Connectivity During Aging."
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "bioRxiv preprint in PMC via the NIH Preprint Pilot; PMID 42619712; doi:10.64898/2026.07.27.740981; not peer reviewed. Replaces the server download, which medRxiv/bioRxiv refuse to automated clients"
+  # ---- LaTeX manuscripts hosted on GitHub (arXiv licences could not be verified - see SOURCES.md): 18 ----
+  - id: gh-jalemkul-gmx_tutorials_livecoms
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/jalemkul/gmx_tutorials_livecoms/archive/8eec5ce93271fde4a97a3975be9906ef5e846681.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit 8eec5ce93271 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: physical-earth-sciences
+    title: "From Proteins to Perturbed Hamiltonians: A Suite of Tutorials for the GROMACS-2025 Molecular Simulation Package"
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: gmx_tutorials.tex; tarball top-level dir is gmx_tutorials_livecoms-8eec5ce93271fde4a97a3975be9906ef5e846681/; LiveCoMS living paper (computational chemistry); single 250 KB .tex; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-boettiger-lab-pomdp-intro
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/boettiger-lab/pomdp-intro/archive/161c1feea8387b2a87ee80135227d7a7ecf0470b.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.md at commit 161c1feea838 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: ecology-evolution
+    title: "Resolving the measurement uncertainty paradox in ecological management"
+    year: 2020
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: manuscripts/manuscript.tex; tarball top-level dir is pomdp-intro-161c1feea8387b2a87ee80135227d7a7ecf0470b/; American Naturalist manuscript (repo description); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-sckott-gbifms
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/sckott/gbifms/archive/bfddbb6d21d9c16abc56603772a30895e4272cb1.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit bfddbb6d21d9 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: ecology-evolution
+    title: "R Python, and Ruby clients for GBIF species occurrence data"
+    year: 2020
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: manuscript.tex; tarball top-level dir is gbifms-bfddbb6d21d9c16abc56603772a30895e4272cb1/; biodiversity informatics manuscript; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-rossmounce-homoplasy-paper
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/rossmounce/homoplasy-paper/archive/f738336121f66eaf8ccc9c7d8cd574a51349e98c.tar.gz
+    licence: CC0-1.0
+    licence_evidence: "LICENSE at commit f738336121f6 read via raw.githubusercontent.com 2026-10-03 ('CC0 1.0 Universal' licence text)"
+    discipline: ecology-evolution
+    title: "A systematic investigation of homoplasy metrics across cladistic studies"
+    year: 2014
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: manuscript/manuscript.tex; tarball top-level dir is homoplasy-paper-f738336121f66eaf8ccc9c7d8cd574a51349e98c/; draft manuscript (title still carries a '[Lame working title]' prefix) - realistic work-in-progress LaTeX; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-kingaa-structured-genealogy-process-paper
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/kingaa/structured-genealogy-process-paper/archive/c16e0ad6dfef9cc260f28b9d26e9fc3aae0ac4af.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit c16e0ad6dfef read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: epidemiology
+    title: "Exact Phylodynamic Likelihood via Structured Markov Genealogy Processes"
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: ms.Rnw; tarball top-level dir is structured-genealogy-process-paper-c16e0ad6dfef9cc260f28b9d26e9fc3aae0ac4af/; Sweave/knitr source (LaTeX with R chunks), King, Lin & Ionides; main file is .Rnw, not .tex; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-pboesu-replication_candy_1991
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/pboesu/replication_candy_1991/archive/98329d447ef025c260879f28316015fc0b24fb08.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.md at commit 98329d447ef0 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "[Re] Modeling Insect Phenology Using Ordinal Regression and Continuation Ratio Models"
+    year: 2021
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: article/article.tex; tarball top-level dir is replication_candy_1991-98329d447ef025c260879f28316015fc0b24fb08/; ReScience replication article; body in article/content.tex via \\input; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-sethaxen-rand_invwishart
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/sethaxen/rand_invwishart/archive/0449ad4a599ff836293a3bfcc1095455fab6577d.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit 0449ad4a599f read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "Efficiently generating inverse-Wishart matrices and their Cholesky factors"
+    year: 2023
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: paper/main.tex; tarball top-level dir is rand_invwishart-0449ad4a599ff836293a3bfcc1095455fab6577d/; statistics methods paper; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-emhart-10-simple-rules-data-storage
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/emhart/10-simple-rules-data-storage/archive/9ea14b1159e5fe6f4d2da2418a137a1ac72b9093.tar.gz
+    licence: CC0-1.0
+    licence_evidence: "LICENSE at commit 9ea14b1159e5 read via raw.githubusercontent.com 2026-10-03 ('CC0 1.0 Universal' licence text)"
+    discipline: computational-statistics
+    title: "Ten Simple Rules for Digital Data Storage"
+    year: 2016
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: manuscript/manuscript.tex; tarball top-level dir is 10-simple-rules-data-storage-9ea14b1159e5fe6f4d2da2418a137a1ac72b9093/; PLOS Computational Biology 'Ten Simple Rules' manuscript (PLOS LaTeX template); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-sckott-textmine
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/sckott/textmine/archive/e6e8a1325e27ea9a3b9ec61eb35acb1facd19938.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit e6e8a1325e27 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "R tools for accessing research literature for text mining"
+    year: 2019
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: manuscript.tex; tarball top-level dir is textmine-e6e8a1325e27ea9a3b9ec61eb35acb1facd19938/; rOpenSci manuscript; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-mdeff-paper-cnn-graph-recurrent-iclr2017
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/mdeff/paper-cnn-graph-recurrent-iclr2017/archive/0e0788da49a188b9de50ad31c48a72d2ad0757fb.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.txt at commit 0e0788da49a1 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "Spatio-Temporal Sequence-to-Sequence Modeling with Graph Convolutional Recurrent Networks"
+    year: 2021
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: paper.tex; tarball top-level dir is paper-cnn-graph-recurrent-iclr2017-0e0788da49a188b9de50ad31c48a72d2ad0757fb/; ICLR 2017 submission (machine learning); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-mdeff-paper-fma-ismir2017
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/mdeff/paper-fma-ismir2017/archive/400b5e3905c59cf94088f88832f2c621039ae52f.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.txt at commit 400b5e3905c5 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "FMA: A Dataset For Music Analysis"
+    year: 2021
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: fma.tex; tarball top-level dir is paper-fma-ismir2017-400b5e3905c59cf94088f88832f2c621039ae52f/; ISMIR 2017 paper; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-stefaniaebli-paper-snn-neurips2020tda
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/stefaniaebli/paper-snn-neurips2020tda/archive/935658c9fa93897b4e288918e6e9c3fb0a0bee3e.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.txt at commit 935658c9fa93 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "Simplicial Neural Networks"
+    year: 2021
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: neurips_2020_tda.tex; tarball top-level dir is paper-snn-neurips2020tda-935658c9fa93897b4e288918e6e9c3fb0a0bee3e/; NeurIPS 2020 TDA workshop; multi-file (\\input of section files), custom .sty; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-bbchallenge-bbchallenge-paper
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/bbchallenge/bbchallenge-paper/archive/c563cb33b5ec328dfa71182aac3dd4ba9bcfba0f.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.txt at commit c563cb33b5ec read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: computational-statistics
+    title: "Determination of the fifth Busy Beaver value"
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: bbchallenge-paper.tex; tarball top-level dir is bbchallenge-paper-c563cb33b5ec328dfa71182aac3dd4ba9bcfba0f/; theoretical computer science; heavy maths, TikZ figures in sections/ and figures/; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-psychoinformatics-de-paper-remodnav
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/psychoinformatics-de/paper-remodnav/archive/34388d3ca78fbd483e022e4e2851be390b7eebf2.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "COPYING at commit 34388d3ca78f read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: social-sciences
+    title: "REMoDNaV: Robust Eye-Movement Classification for Dynamic Stimulation"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: main.tex; tarball top-level dir is paper-remodnav-34388d3ca78fbd483e022e4e2851be390b7eebf2/; psychology/neuroscience methods paper (bioRxiv doi:10.1101/619254 per repo description); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-xronos-ch-paper
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/xronos-ch/paper/archive/340202dfcecd0a5756d2e100e61d8c85d79ef030.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE.md at commit 340202dfcecd read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: humanities
+    title: "XRONOS: An Open Data Infrastructure for Archaeological Chronology"
+    year: 2025
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: paper.tex; tarball top-level dir is paper-340202dfcecd0a5756d2e100e61d8c85d79ef030/; archaeology; Quarto-generated LaTeX (elsarticle); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-cysouw-diathesis
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/cysouw/diathesis/archive/28000ef3b9c03cb303c4d04ddf0d0582f630c51e.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit 28000ef3b9c0 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: humanities
+    title: "German diatheses (developing book manuscript)"
+    year: 2026
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: latex/main.tex; tarball top-level dir is diathesis-28000ef3b9c03cb303c4d04ddf0d0582f630c51e/; linguistics book; latex/chapters/all.tex is ~1.8 MB - large-file test; title from repo description; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-arfc-2021-park-moltres-benchmark
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/arfc/2021-park-moltres-benchmark/archive/497be0523d501d7dfc827bc9b07f0dd3910afce4.tar.gz
+    licence: CC-BY-4.0
+    licence_evidence: "LICENSE at commit 497be0523d50 read via raw.githubusercontent.com 2026-10-03 ('Attribution 4.0 International' licence text)"
+    discipline: engineering
+    title: "Verification of Moltres for Multiphysics Simulations of Fast-Spectrum Molten Salt Reactors"
+    year: 2022
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: main.tex; tarball top-level dir is 2021-park-moltres-benchmark-497be0523d501d7dfc827bc9b07f0dd3910afce4/; nuclear engineering journal article; elsarticle, many \\input files; author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+  - id: gh-cyclus-fundamentals-paper
+    kind: preprint
+    source: github
+    format: latex
+    url: https://github.com/cyclus/fundamentals-paper/archive/1542eca0a5a04c3e032c6b9b160dd35ae9f256e5.tar.gz
+    licence: CC0-1.0
+    licence_evidence: "LICENSE at commit 1542eca0a5a0 read via raw.githubusercontent.com 2026-10-03 ('CC0 1.0 Universal' licence text)"
+    discipline: engineering
+    title: "Fundamental Concepts in the Cyclus Fuel Cycle Simulator Framework"
+    year: 2016
+    permitted_use: [ci_eval, train_experimental]
+    notes: "main: fundamentals/fundamentals.tex; tarball top-level dir is fundamentals-paper-1542eca0a5a04c3e032c6b9b160dd35ae9f256e5/; nuclear fuel-cycle software paper; repo also holds a cover letter (cover_letter/); author manuscript source, not necessarily the published version of record; year = date of pinned commit"
+
+  # ---- Word robustness test files: 41 ----
+  - id: docx-poi-bug56075-changetracking-on
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/bug56075-changeTracking_on.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: tracked changes switched on (w:trackRevisions)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12606 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-delins
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/delins.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: tracked insertions and deletions (w:ins / w:del)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "17720 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-testcomment
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/testComment.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: comments (comments.xml) anchored in body text"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "65298 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-comment
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/comment.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: minimal document with a comment"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "4926 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-footnotes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/footnotes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: footnotes"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12823 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-endnotes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/endnotes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: endnotes"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "13553 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-table-footnotes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/table_footnotes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: footnotes inside table cells"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "13177 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-deep-table-cell
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/deep-table-cell.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: deeply nested tables"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "17198 bytes at pinned commit; expected: graceful error (5,000 nested tables; refused by the reader's depth cap, P29); repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: error            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-fieldcodes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/FieldCodes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: complex field codes (w:fldChar / w:instrText)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "17034 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-fldsimple
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/FldSimple.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: simple fields (w:fldSimple)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12837 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-complexnumberedlists
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/ComplexNumberedLists.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: multi-level numbered lists"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "14458 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-headerfooterunicode
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/HeaderFooterUnicode.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: headers/footers with non-ASCII text"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15079 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-rtl
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/rtl.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: right-to-left text"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "6838 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-smarttag-snippet
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/smarttag-snippet.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: smart tags wrapping runs"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "11862 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-checkboxes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/checkboxes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: content-control checkboxes"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "20800 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-shapes-with-text
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/shapes-with-text.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: drawing shapes containing text"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "27520 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-test-recursive-embedded
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/integration/test_recursive_embedded.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: recursively embedded OLE documents"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "27082 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-simplemacro
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/SimpleMacro.docm
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: macro-enabled document (.docm)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15517 bytes at pinned commit; expected: parse or clear rejection; never execute; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: either            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-multiplebodybug
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/MultipleBodyBug.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: malformed: more than one w:body"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "102103 bytes at pinned commit; expected: graceful error or best-effort parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: either            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-truncated62886
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/truncated62886.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: truncated/corrupt ZIP"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "19785 bytes at pinned commit; expected: graceful error; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: error            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-zero-length
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/zero-length.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: zero-length part inside the package"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "10469 bytes at pinned commit; expected: graceful error or best-effort parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: either            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-bug53475-password-is-pass
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/bug53475-password-is-pass.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: password-encrypted (OLE2/CFB container, not a ZIP)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "29696 bytes at pinned commit; expected: graceful 'encrypted' error; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: error            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-externalentityintext
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/ExternalEntityInText.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: XML external entity in document.xml (XXE probe)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12756 bytes at pinned commit; expected: must NOT resolve the entity; parse safely or reject; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: either            # parse | error | either (machine-readable form of notes)
+  - id: docx-poi-clusterfuzz-testcase-minimized-poixwpffuzzer-4791943399604224
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/clusterfuzz-testcase-minimized-POIXWPFFuzzer-4791943399604224.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi legal/LICENSE ('Apache License Version 2.0, January 2004') at commit 732120980140, read 2026-10-03"
+    discipline: none
+    title: "apache/poi test file: fuzzer-minimised crash case"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15932 bytes at pinned commit; expected: graceful error, no hang; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: error            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-math-nary
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/math-nary.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: OMML equations: n-ary operators"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "3562 bytes at pinned commit; expected: parse; maths masked; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-math-matrix
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/math-matrix.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: OMML equations: matrix"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "3507 bytes at pinned commit; expected: parse; maths masked; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-math-mso2k7
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/math-mso2k7.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: OMML equations written by Word 2007"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12207 bytes at pinned commit; expected: parse; maths masked; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-mathtype
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/mathtype.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: MathType OLE equation objects"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12533 bytes at pinned commit; expected: parse; equation objects skipped; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-equationwithaboveandbelowcaption
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/EquationWithAboveAndBelowCaption.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: numbered display equation with captions"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15211 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-strict
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/strict.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: Strict OOXML (ISO/IEC 29500 Strict namespaces)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "25636 bytes at pinned commit; expected: parse (PLAN.md S2 gap: untested); repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-99-fields
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/99_Fields.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: 99 different Word field types"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15788 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-commentreply
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/CommentReply.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: threaded comment replies"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "10353 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-sdt-citation-run
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/sdt-citation-run.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: citation inside a structured-document tag (as reference managers insert)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12817 bytes at pinned commit; expected: parse; citation masked; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-multi-page-toc
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/multi-page-toc.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: multi-page table of contents field"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "18321 bytes at pinned commit; expected: parse; TOC not checked as prose; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-linkedtextboxes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/LinkedTextBoxes.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: linked text boxes"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "62194 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-core-redline-range-comment
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/LibreOffice/core/3bc01f0c998c855dc16ca5aa620290a3cefc5d79/sw/qa/extras/ooxmlexport/data/redline-range-comment.docx
+    licence: MPL-2.0
+    licence_evidence: "LibreOffice/core COPYING.MPL ('Mozilla Public License Version 2.0'); tree also ships COPYING (GPL-3.0) and COPYING.LGPL at commit 3bc01f0c998c, read 2026-10-03"
+    discipline: none
+    title: "LibreOffice/core test file: comment range overlapping tracked changes"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "17713 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-python-docx-comments-rich-para
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/python-openxml/python-docx/e45454602b53e8e572b179ccf1c91093ec9f4ed7/features/steps/test_files/comments-rich-para.docx
+    licence: MIT
+    licence_evidence: "python-openxml/python-docx LICENSE ('The MIT License (MIT)') at commit e45454602b53, read 2026-10-03"
+    discipline: none
+    title: "python-openxml/python-docx test file: comments with rich paragraph content"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "20023 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-python-docx-par-hyperlinks
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/python-openxml/python-docx/e45454602b53e8e572b179ccf1c91093ec9f4ed7/features/steps/test_files/par-hyperlinks.docx
+    licence: MIT
+    licence_evidence: "python-openxml/python-docx LICENSE ('The MIT License (MIT)') at commit e45454602b53, read 2026-10-03"
+    discipline: none
+    title: "python-openxml/python-docx test file: hyperlinks inside paragraphs"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "12385 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-mammoth-js-strict-format
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/mwilliamson/mammoth.js/791a189230977143cde64dbf9f1d24dce96ac8a1/test/test-data/strict-format.docx
+    licence: BSD-2-Clause
+    licence_evidence: "mwilliamson/mammoth.js LICENSE (two-clause BSD text, 'Copyright (c) 2013, Michael Williamson') at commit 791a18923097, read 2026-10-03"
+    discipline: none
+    title: "mwilliamson/mammoth.js test file: Strict OOXML (second producer)"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "11692 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-mammoth-js-utf8-bom
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/mwilliamson/mammoth.js/791a189230977143cde64dbf9f1d24dce96ac8a1/test/test-data/utf8-bom.docx
+    licence: BSD-2-Clause
+    licence_evidence: "mwilliamson/mammoth.js LICENSE (two-clause BSD text, 'Copyright (c) 2013, Michael Williamson') at commit 791a18923097, read 2026-10-03"
+    discipline: none
+    title: "mwilliamson/mammoth.js test file: XML parts with a UTF-8 byte-order mark"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "2836 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)
+  - id: docx-mammoth-js-text-box
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/mwilliamson/mammoth.js/791a189230977143cde64dbf9f1d24dce96ac8a1/test/test-data/text-box.docx
+    licence: BSD-2-Clause
+    licence_evidence: "mwilliamson/mammoth.js LICENSE (two-clause BSD text, 'Copyright (c) 2013, Michael Williamson') at commit 791a18923097, read 2026-10-03"
+    discipline: none
+    title: "mwilliamson/mammoth.js test file: text in a text box"
+    year: null
+    permitted_use: [ci_eval]
+    notes: "15850 bytes at pinned commit; expected: parse; repo licence only - test documents carry no per-file notice and some originate from bug reports, so CI evaluation only"
+    expect: parse            # parse | error | either (machine-readable form of notes)

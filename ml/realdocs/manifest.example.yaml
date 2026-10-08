@@ -1,0 +1,147 @@
+# Example manifest for the real-document bench (ml/realdocs/).
+#
+# The corpus builder's manifest.yaml (articles and preprints) takes
+# precedence when present; this file is the fallback and the bench's own
+# smoke test. Every entry is a Word test file from Apache POI, pinned to one
+# commit so the bytes never change under us.
+#
+# Licence: Apache POI is Apache-2.0 (legal/LICENSE in the pinned commit,
+# seen first-hand 2026-10-03 via a checkout of apache/poi@7321209). Some
+# POI test files began as documents attached to public bug reports and were
+# contributed to the project under that licence. They are fetched at run
+# time and never committed here.
+#
+# expect (same field as manifest.yaml):
+#   parse   the file must be read (an IngestError is a failure);
+#   error   the file must be refused with an IngestError (a read is a failure);
+#   either  both pass. A crash, a hang or a reader touching the network or
+#           another file always fails.
+# notes may also carry `pick: <glob>` (the URL returns a zip; check its
+# matching members) and `main: <path>` (a LaTeX project's main file).
+version: 1
+items:
+  - id: poi-heading123
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/heading123.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: three heading levels"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "Heading 1-3 styles; exercises style-based heading detection."
+    expect: parse
+
+  - id: poi-bug59058
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/bug59058.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: long document with headings and tables"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "About 18k words; the long-document and timing check."
+    expect: parse
+
+  - id: poi-delins
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/delins.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: tracked insertions and deletions"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "Tracked changes are read as if accepted."
+    expect: parse
+
+  - id: poi-fieldcodes
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/FieldCodes.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: field codes"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "Field results kept, field codes dropped."
+    expect: parse
+
+  - id: poi-drawing
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/drawing.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: drawings, headings and tables"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "Figures and tables in the structure list."
+    expect: parse
+
+  - id: poi-deep-table-cell
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/deep-table-cell.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: tables nested very deeply"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "Deep nesting must be refused or read; never a crash."
+    expect: either
+
+  - id: poi-truncated
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/truncated62886.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: a truncated .docx"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: ""
+    expect: error
+
+  - id: poi-external-entity
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/ExternalEntityInText.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: an XML external entity in the text"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "The entity must never be resolved: a clean refusal or a read with it unexpanded both pass (the I/O watch checks no file or network access)."
+    expect: either
+
+  - id: poi-password
+    kind: test-file
+    source: github
+    format: docx
+    url: https://raw.githubusercontent.com/apache/poi/732120980140d5ed64b482c470e0b625cdb1ab15/test-data/document/bug53475-password-is-pass.docx
+    licence: Apache-2.0
+    licence_evidence: "apache/poi@7321209 legal/LICENSE (Apache License 2.0)"
+    discipline: software-test-file
+    title: "Apache POI test file: a password-protected .docx"
+    year: 2026
+    permitted_use: [ci_eval]
+    notes: "an encrypted .docx is not a zip."
+    expect: error

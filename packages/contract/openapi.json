@@ -1,0 +1,2818 @@
+{
+  "components": {
+    "schemas": {
+      "AnalyzeFileResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "checklist": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChecklistReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.checklist` was set and resolved to a checklist."
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "description": "Shown suggestions per category.",
+            "title": "Counts",
+            "type": "object"
+          },
+          "document": {
+            "$ref": "#/components/schemas/SourceInfo"
+          },
+          "elapsed_ms": {
+            "minimum": 0.0,
+            "title": "Elapsed Ms",
+            "type": "integer"
+          },
+          "engine": {
+            "$ref": "#/components/schemas/EngineInfo"
+          },
+          "health": {
+            "description": "Every surface must show a degraded tier (CLAUDE.md: no silent tiers).",
+            "items": {
+              "$ref": "#/components/schemas/TierHealth"
+            },
+            "title": "Health",
+            "type": "array"
+          },
+          "hidden_by_mode": {
+            "default": 0,
+            "description": "Document-level suggestions Draft mode held back (0 in Revise).",
+            "minimum": 0.0,
+            "title": "Hidden By Mode",
+            "type": "integer"
+          },
+          "hidden_preferences": {
+            "minimum": 0.0,
+            "title": "Hidden Preferences",
+            "type": "integer"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/Mode",
+            "default": "revise",
+            "description": "The mode this check ran in."
+          },
+          "narrative": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NarrativeMap"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.narrative` was true."
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileInfo",
+            "description": "The article-type profile this check ran under."
+          },
+          "review": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReviewReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.review` was true."
+          },
+          "schema_version": {
+            "const": "1",
+            "default": "1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sections_detected": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sections Detected",
+            "type": "array"
+          },
+          "signed_in": {
+            "default": false,
+            "description": "True when a valid account token came with the request and its settings were looked up.",
+            "title": "Signed In",
+            "type": "boolean"
+          },
+          "suggested_checklist": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reporting checklist the text's own words point to, if any (always computed; offer it).",
+            "title": "Suggested Checklist"
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/Suggestion"
+            },
+            "title": "Suggestions",
+            "type": "array"
+          },
+          "warnings": {
+            "description": "What was skipped or approximated while reading the text, e.g. LaTeX that could not be parsed and was read with a simpler method. May quote the caller's own text; never logged.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "suggestions",
+          "counts",
+          "hidden_preferences",
+          "sections_detected",
+          "health",
+          "engine",
+          "elapsed_ms",
+          "document"
+        ],
+        "title": "AnalyzeFileResponse",
+        "type": "object"
+      },
+      "AnalyzeOptions": {
+        "additionalProperties": false,
+        "properties": {
+          "checklist": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChecklistChoice"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Check the text against a reporting checklist (`checklist` in the response): a guideline's id, or `auto` for the one the text's words point to."
+          },
+          "disabled_rules": {
+            "description": "Rule ids to mute for this request, e.g. [\"G101\"]. For a signed-in caller these are added to the rules muted in their account settings.",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 200,
+            "title": "Disabled Rules",
+            "type": "array"
+          },
+          "document_type": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DocumentType"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The article type to check as. Omitted: the caller's saved setting, else auto."
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Mode"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Draft or Revise for this request. Omitted: the caller's saved setting, else revise."
+          },
+          "narrative": {
+            "default": false,
+            "description": "Also build the narrative map (`narrative` in the response) from the same analysis.",
+            "title": "Narrative",
+            "type": "boolean"
+          },
+          "review": {
+            "default": false,
+            "description": "Also build the critical reader's brief (`review` in the response) from the same analysis.",
+            "title": "Review",
+            "type": "boolean"
+          },
+          "show_preferences": {
+            "default": false,
+            "description": "Include Preference-type suggestions (hidden by default).",
+            "title": "Show Preferences",
+            "type": "boolean"
+          }
+        },
+        "title": "AnalyzeOptions",
+        "type": "object"
+      },
+      "AnalyzeRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "content": {
+            "description": "The document text. Held in memory for this request only; never stored or logged.",
+            "maxLength": 1000000,
+            "minLength": 1,
+            "title": "Content",
+            "type": "string"
+          },
+          "format": {
+            "$ref": "#/components/schemas/Format",
+            "default": "plain",
+            "description": "How to read `content`."
+          },
+          "options": {
+            "$ref": "#/components/schemas/AnalyzeOptions"
+          }
+        },
+        "required": [
+          "content"
+        ],
+        "title": "AnalyzeRequest",
+        "type": "object"
+      },
+      "AnalyzeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "checklist": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChecklistReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.checklist` was set and resolved to a checklist."
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "description": "Shown suggestions per category.",
+            "title": "Counts",
+            "type": "object"
+          },
+          "elapsed_ms": {
+            "minimum": 0.0,
+            "title": "Elapsed Ms",
+            "type": "integer"
+          },
+          "engine": {
+            "$ref": "#/components/schemas/EngineInfo"
+          },
+          "health": {
+            "description": "Every surface must show a degraded tier (CLAUDE.md: no silent tiers).",
+            "items": {
+              "$ref": "#/components/schemas/TierHealth"
+            },
+            "title": "Health",
+            "type": "array"
+          },
+          "hidden_by_mode": {
+            "default": 0,
+            "description": "Document-level suggestions Draft mode held back (0 in Revise).",
+            "minimum": 0.0,
+            "title": "Hidden By Mode",
+            "type": "integer"
+          },
+          "hidden_preferences": {
+            "minimum": 0.0,
+            "title": "Hidden Preferences",
+            "type": "integer"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/Mode",
+            "default": "revise",
+            "description": "The mode this check ran in."
+          },
+          "narrative": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NarrativeMap"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.narrative` was true."
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileInfo",
+            "description": "The article-type profile this check ran under."
+          },
+          "review": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReviewReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.review` was true."
+          },
+          "schema_version": {
+            "const": "1",
+            "default": "1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sections_detected": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sections Detected",
+            "type": "array"
+          },
+          "signed_in": {
+            "default": false,
+            "description": "True when a valid account token came with the request and its settings were looked up.",
+            "title": "Signed In",
+            "type": "boolean"
+          },
+          "suggested_checklist": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reporting checklist the text's own words point to, if any (always computed; offer it).",
+            "title": "Suggested Checklist"
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/Suggestion"
+            },
+            "title": "Suggestions",
+            "type": "array"
+          },
+          "warnings": {
+            "description": "What was skipped or approximated while reading the text, e.g. LaTeX that could not be parsed and was read with a simpler method. May quote the caller's own text; never logged.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "suggestions",
+          "counts",
+          "hidden_preferences",
+          "sections_detected",
+          "health",
+          "engine",
+          "elapsed_ms"
+        ],
+        "title": "AnalyzeResponse",
+        "type": "object"
+      },
+      "AnalyzeWordRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "options": {
+            "$ref": "#/components/schemas/AnalyzeOptions"
+          },
+          "paragraphs": {
+            "description": "The document's paragraphs in order. Held in memory for this request only; never stored or logged.",
+            "items": {
+              "$ref": "#/components/schemas/WordParagraph"
+            },
+            "maxItems": 50000,
+            "minItems": 1,
+            "title": "Paragraphs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "paragraphs"
+        ],
+        "title": "AnalyzeWordRequest",
+        "type": "object"
+      },
+      "AnalyzeWordResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "checklist": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ChecklistReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.checklist` was set and resolved to a checklist."
+          },
+          "counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "description": "Shown suggestions per category.",
+            "title": "Counts",
+            "type": "object"
+          },
+          "coverage": {
+            "$ref": "#/components/schemas/Coverage"
+          },
+          "elapsed_ms": {
+            "minimum": 0.0,
+            "title": "Elapsed Ms",
+            "type": "integer"
+          },
+          "engine": {
+            "$ref": "#/components/schemas/EngineInfo"
+          },
+          "health": {
+            "description": "Every surface must show a degraded tier (CLAUDE.md: no silent tiers).",
+            "items": {
+              "$ref": "#/components/schemas/TierHealth"
+            },
+            "title": "Health",
+            "type": "array"
+          },
+          "hidden_by_mode": {
+            "default": 0,
+            "description": "Document-level suggestions Draft mode held back (0 in Revise).",
+            "minimum": 0.0,
+            "title": "Hidden By Mode",
+            "type": "integer"
+          },
+          "hidden_preferences": {
+            "minimum": 0.0,
+            "title": "Hidden Preferences",
+            "type": "integer"
+          },
+          "metrics": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Metrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mode": {
+            "$ref": "#/components/schemas/Mode",
+            "default": "revise",
+            "description": "The mode this check ran in."
+          },
+          "narrative": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NarrativeMap"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.narrative` was true."
+          },
+          "profile": {
+            "$ref": "#/components/schemas/ProfileInfo",
+            "description": "The article-type profile this check ran under."
+          },
+          "review": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReviewReport"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Present when `options.review` was true."
+          },
+          "schema_version": {
+            "const": "1",
+            "default": "1",
+            "title": "Schema Version",
+            "type": "string"
+          },
+          "sections_detected": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sections Detected",
+            "type": "array"
+          },
+          "signed_in": {
+            "default": false,
+            "description": "True when a valid account token came with the request and its settings were looked up.",
+            "title": "Signed In",
+            "type": "boolean"
+          },
+          "suggested_checklist": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The reporting checklist the text's own words point to, if any (always computed; offer it).",
+            "title": "Suggested Checklist"
+          },
+          "suggestions": {
+            "items": {
+              "$ref": "#/components/schemas/WordSuggestion"
+            },
+            "title": "Suggestions",
+            "type": "array"
+          },
+          "warnings": {
+            "description": "What was skipped or approximated while reading the text, e.g. LaTeX that could not be parsed and was read with a simpler method. May quote the caller's own text; never logged.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "suggestions",
+          "counts",
+          "hidden_preferences",
+          "sections_detected",
+          "health",
+          "engine",
+          "elapsed_ms",
+          "coverage"
+        ],
+        "title": "AnalyzeWordResponse",
+        "type": "object"
+      },
+      "Category": {
+        "description": "The four-type taxonomy (CLAUDE.md #3). Conventions are never errors;\npreferences are hidden unless asked for.",
+        "enum": [
+          "correction",
+          "improvement",
+          "convention",
+          "preference"
+        ],
+        "title": "Category",
+        "type": "string"
+      },
+      "ChecklistChoice": {
+        "description": "Reporting checklists of the discipline packs (S4, P3).",
+        "enum": [
+          "auto",
+          "strobe",
+          "consort",
+          "prisma",
+          "epiforge"
+        ],
+        "title": "ChecklistChoice",
+        "type": "string"
+      },
+      "ChecklistChoiceInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "design": {
+            "title": "Design",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "pack": {
+            "title": "Pack",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "design",
+          "pack"
+        ],
+        "title": "ChecklistChoiceInfo",
+        "type": "object"
+      },
+      "ChecklistItem": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The sentence that reports it (never logged).",
+            "title": "Evidence"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "plain": {
+            "title": "Plain",
+            "type": "string"
+          },
+          "question": {
+            "title": "Question",
+            "type": "string"
+          },
+          "sections": {
+            "description": "Where readers look for it.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "status": {
+            "description": "needs_check is a prompt, never a verdict: the item may be in a table, a figure or the supplement, or not apply.",
+            "enum": [
+              "reported",
+              "needs_check"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "topic": {
+            "title": "Topic",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "topic",
+          "question",
+          "plain",
+          "status"
+        ],
+        "title": "ChecklistItem",
+        "type": "object"
+      },
+      "ChecklistReport": {
+        "additionalProperties": false,
+        "description": "A reporting checklist checked against the text: reporting only,\nnever the science.",
+        "properties": {
+          "design": {
+            "title": "Design",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ChecklistItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "note": {
+            "title": "Note",
+            "type": "string"
+          },
+          "reported": {
+            "minimum": 0.0,
+            "title": "Reported",
+            "type": "integer"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "suggested": {
+            "description": "True when the text's own words point to this checklist.",
+            "title": "Suggested",
+            "type": "boolean"
+          },
+          "total": {
+            "minimum": 0.0,
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "design",
+          "source",
+          "suggested",
+          "items",
+          "reported",
+          "total",
+          "note"
+        ],
+        "title": "ChecklistReport",
+        "type": "object"
+      },
+      "Coverage": {
+        "additionalProperties": false,
+        "description": "What was and was not read, stated plainly.",
+        "properties": {
+          "not_checked": {
+            "description": "Parts of a Word document Office JS does not hand over, e.g. footnotes.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Not Checked",
+            "type": "array"
+          },
+          "paragraphs": {
+            "minimum": 0.0,
+            "title": "Paragraphs",
+            "type": "integer"
+          },
+          "table_paragraphs": {
+            "minimum": 0.0,
+            "title": "Table Paragraphs",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "paragraphs",
+          "table_paragraphs",
+          "not_checked"
+        ],
+        "title": "Coverage",
+        "type": "object"
+      },
+      "DocumentType": {
+        "description": "Article-type profile (S4). `auto` guesses from the headings and is\notherwise `general`; the others switch off the checks that do not\napply to that kind of document and say what section unheaded prose is\nin (a commentary is argued like a Discussion).",
+        "enum": [
+          "auto",
+          "general",
+          "manuscript",
+          "thesis-chapter",
+          "abstract",
+          "commentary",
+          "policy-brief",
+          "grant",
+          "response-to-reviewers"
+        ],
+        "title": "DocumentType",
+        "type": "string"
+      },
+      "EngineInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "core_version": {
+            "title": "Core Version",
+            "type": "string"
+          },
+          "rules_loaded": {
+            "title": "Rules Loaded",
+            "type": "integer"
+          },
+          "service_version": {
+            "title": "Service Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "service_version",
+          "core_version",
+          "rules_loaded"
+        ],
+        "title": "EngineInfo",
+        "type": "object"
+      },
+      "ErrorBody": {
+        "additionalProperties": false,
+        "description": "Every non-2xx response. `code` is stable and machine-readable;\n`message` is for people and never contains document text.",
+        "properties": {
+          "code": {
+            "description": "One of: invalid_request, malformed_json, malformed_request, payload_too_large, unsupported_media_type, unsupported_file, unreadable_file, unauthorized, sign_in_required, auth_unavailable, rate_limited, not_found, method_not_allowed, internal, or http_error for any other HTTP status",
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "request_id": {
+            "description": "Quote this when reporting a problem.",
+            "title": "Request Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "request_id"
+        ],
+        "title": "ErrorBody",
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorBody"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "type": "object"
+      },
+      "FixSafety": {
+        "enum": [
+          "safe",
+          "review"
+        ],
+        "title": "FixSafety",
+        "type": "string"
+      },
+      "Format": {
+        "description": "Formats of pasted `content`. Files (.docx, .tex, Overleaf .zip, …) go\nto /v1/analyze-file instead; `word_paragraphs` arrives with the hosted\nadd-in (S3).",
+        "enum": [
+          "plain",
+          "markdown",
+          "latex"
+        ],
+        "title": "Format",
+        "type": "string"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "engine": {
+            "$ref": "#/components/schemas/EngineInfo"
+          },
+          "status": {
+            "description": "degraded when any tier the service is configured to run is not ok.",
+            "enum": [
+              "ok",
+              "degraded"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "tiers": {
+            "items": {
+              "$ref": "#/components/schemas/TierHealth"
+            },
+            "title": "Tiers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "status",
+          "tiers",
+          "engine"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "HedgingPoint": {
+        "additionalProperties": false,
+        "description": "Hedges and boosters per 100 words in one section: a trajectory, not a score.",
+        "properties": {
+          "boosters_per_100w": {
+            "minimum": 0.0,
+            "title": "Boosters Per 100W",
+            "type": "number"
+          },
+          "hedges_per_100w": {
+            "minimum": 0.0,
+            "title": "Hedges Per 100W",
+            "type": "number"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "reading": {
+            "description": "flat | hedged | assertive | balanced | heavily hedged",
+            "title": "Reading",
+            "type": "string"
+          },
+          "section": {
+            "title": "Section",
+            "type": "string"
+          },
+          "words": {
+            "minimum": 0.0,
+            "title": "Words",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "section",
+          "label",
+          "words",
+          "hedges_per_100w",
+          "boosters_per_100w",
+          "reading"
+        ],
+        "title": "HedgingPoint",
+        "type": "object"
+      },
+      "LearnCard": {
+        "additionalProperties": false,
+        "description": "A short lesson behind a suggestion (S4): plain words, one invented\nbefore-and-after, a habit to check your own draft, the sources.",
+        "properties": {
+          "after": {
+            "title": "After",
+            "type": "string"
+          },
+          "before": {
+            "title": "Before",
+            "type": "string"
+          },
+          "group": {
+            "title": "Group",
+            "type": "string"
+          },
+          "habit": {
+            "title": "Habit",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "lesson": {
+            "title": "Lesson",
+            "type": "string"
+          },
+          "moves": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Moves",
+            "type": "array"
+          },
+          "rules": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Rules",
+            "type": "array"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "group",
+          "summary",
+          "lesson",
+          "before",
+          "after",
+          "habit",
+          "source"
+        ],
+        "title": "LearnCard",
+        "type": "object"
+      },
+      "LearnResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "cards": {
+            "items": {
+              "$ref": "#/components/schemas/LearnCard"
+            },
+            "title": "Cards",
+            "type": "array"
+          }
+        },
+        "required": [
+          "cards"
+        ],
+        "title": "LearnResponse",
+        "type": "object"
+      },
+      "Metrics": {
+        "additionalProperties": false,
+        "description": "Read-outs, never a score (metrics.py).",
+        "properties": {
+          "boosters_per_100w": {
+            "title": "Boosters Per 100W",
+            "type": "number"
+          },
+          "hedge_booster_balance": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hedge Booster Balance"
+          },
+          "hedges_per_100w": {
+            "title": "Hedges Per 100W",
+            "type": "number"
+          },
+          "long_sentences": {
+            "title": "Long Sentences",
+            "type": "integer"
+          },
+          "mean_sentence_len": {
+            "title": "Mean Sentence Len",
+            "type": "number"
+          },
+          "nominalizations_per_100w": {
+            "title": "Nominalizations Per 100W",
+            "type": "number"
+          },
+          "passive_share_by_section": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "description": "Share of clauses in the passive voice per section, as a fraction 0-1.",
+            "title": "Passive Share By Section",
+            "type": "object"
+          },
+          "self_mention_per_100w": {
+            "title": "Self Mention Per 100W",
+            "type": "number"
+          },
+          "sentences": {
+            "title": "Sentences",
+            "type": "integer"
+          },
+          "words": {
+            "title": "Words",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sentences",
+          "words",
+          "mean_sentence_len",
+          "long_sentences",
+          "nominalizations_per_100w",
+          "hedges_per_100w",
+          "boosters_per_100w",
+          "self_mention_per_100w"
+        ],
+        "title": "Metrics",
+        "type": "object"
+      },
+      "MissingLink": {
+        "additionalProperties": false,
+        "description": "A link in the argument's chain (claim, grounds, warrant) that could\nnot be found near a claim, in one section.",
+        "properties": {
+          "code": {
+            "title": "Code",
+            "type": "string"
+          },
+          "evidence": {
+            "description": "The sentences concerned (never logged).",
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "learn_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Learn Ref"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "section": {
+            "title": "Section",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "section",
+          "label",
+          "code",
+          "message",
+          "source"
+        ],
+        "title": "MissingLink",
+        "type": "object"
+      },
+      "Mode": {
+        "description": "Draft / Revise (P1). Draft shows sentence-level checks only; Revise\nshows everything. A writing stage, not a quality dial.",
+        "enum": [
+          "draft",
+          "revise"
+        ],
+        "title": "Mode",
+        "type": "string"
+      },
+      "MoveStatus": {
+        "enum": [
+          "present",
+          "missing",
+          "out_of_order"
+        ],
+        "title": "MoveStatus",
+        "type": "string"
+      },
+      "NarrativeMap": {
+        "additionalProperties": false,
+        "description": "Per section, which moves are present, missing or out of order; the\nargument's missing links; the hedging trajectory. Same analysis as the\nsuggestions.",
+        "properties": {
+          "hedging": {
+            "items": {
+              "$ref": "#/components/schemas/HedgingPoint"
+            },
+            "title": "Hedging",
+            "type": "array"
+          },
+          "missing_links": {
+            "items": {
+              "$ref": "#/components/schemas/MissingLink"
+            },
+            "title": "Missing Links",
+            "type": "array"
+          },
+          "note": {
+            "description": "One line summing up the map, or why there is none.",
+            "title": "Note",
+            "type": "string"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DocumentType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/NarrativeSection"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "unmapped": {
+            "description": "Sections found that have no expected moves (topical headings).",
+            "items": {
+              "type": "string"
+            },
+            "title": "Unmapped",
+            "type": "array"
+          }
+        },
+        "required": [
+          "sections",
+          "note",
+          "source"
+        ],
+        "title": "NarrativeMap",
+        "type": "object"
+      },
+      "NarrativeMove": {
+        "additionalProperties": false,
+        "description": "One expected move of a section, as an authored question.",
+        "properties": {
+          "evidence": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The sentence the move rests on, when present (never logged).",
+            "title": "Evidence"
+          },
+          "frame": {
+            "description": "A fill-in frame in Researchly's own wording: curated text, never generated.",
+            "title": "Frame",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "learn_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The Learn card for this move (GET /v1/learn/{id}).",
+            "title": "Learn Ref"
+          },
+          "note": {
+            "default": "",
+            "description": "For an out-of-order move: what it appears before or after.",
+            "title": "Note",
+            "type": "string"
+          },
+          "plain": {
+            "description": "The lesson, in everyday words.",
+            "title": "Plain",
+            "type": "string"
+          },
+          "question": {
+            "title": "Question",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "status": {
+            "$ref": "#/components/schemas/MoveStatus"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "status",
+          "question",
+          "plain",
+          "frame",
+          "source"
+        ],
+        "title": "NarrativeMove",
+        "type": "object"
+      },
+      "NarrativeSection": {
+        "additionalProperties": false,
+        "properties": {
+          "expected": {
+            "minimum": 0.0,
+            "title": "Expected",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "moves": {
+            "items": {
+              "$ref": "#/components/schemas/NarrativeMove"
+            },
+            "title": "Moves",
+            "type": "array"
+          },
+          "present": {
+            "minimum": 0.0,
+            "title": "Present",
+            "type": "integer"
+          },
+          "section": {
+            "title": "Section",
+            "type": "string"
+          },
+          "sentences": {
+            "minimum": 0.0,
+            "title": "Sentences",
+            "type": "integer"
+          },
+          "words": {
+            "minimum": 0.0,
+            "title": "Words",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "section",
+          "label",
+          "sentences",
+          "words",
+          "moves",
+          "present",
+          "expected"
+        ],
+        "title": "NarrativeSection",
+        "type": "object"
+      },
+      "ProfileChoice": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "summary"
+        ],
+        "title": "ProfileChoice",
+        "type": "object"
+      },
+      "ProfileInfo": {
+        "additionalProperties": false,
+        "description": "The article-type profile a check ran under.",
+        "properties": {
+          "evidence": {
+            "default": "",
+            "description": "For a guessed type: the headings the guess rested on.",
+            "title": "Evidence",
+            "type": "string"
+          },
+          "guessed": {
+            "description": "True when the type was `auto` and guessed from the headings.",
+            "title": "Guessed",
+            "type": "boolean"
+          },
+          "id": {
+            "$ref": "#/components/schemas/DocumentType"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "note": {
+            "default": "",
+            "description": "One line saying what the profile switched off, empty when nothing.",
+            "title": "Note",
+            "type": "string"
+          },
+          "rules_off": {
+            "description": "Rules not run for this type.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Rules Off",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "guessed"
+        ],
+        "title": "ProfileInfo",
+        "type": "object"
+      },
+      "ReviewQuestion": {
+        "additionalProperties": false,
+        "properties": {
+          "evidence": {
+            "description": "Sentences of the document the verdict rests on (never logged).",
+            "items": {
+              "type": "string"
+            },
+            "title": "Evidence",
+            "type": "array"
+          },
+          "id": {
+            "description": "A to E.",
+            "title": "Id",
+            "type": "string"
+          },
+          "points": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Points",
+            "type": "array"
+          },
+          "question": {
+            "title": "Question",
+            "type": "string"
+          },
+          "status": {
+            "default": "detected",
+            "description": "What the verdict rests on: detected (with evidence), not detected (the signals found nothing, which is not proof of absence), not assessed (the check was off) or not applicable (that part of the document is not there).",
+            "enum": [
+              "yours",
+              "detected",
+              "not_detected",
+              "not_assessed",
+              "not_applicable"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "verdict": {
+            "description": "One line answering the question from the evidence.",
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "verdict"
+        ],
+        "title": "ReviewQuestion",
+        "type": "object"
+      },
+      "ReviewReport": {
+        "additionalProperties": false,
+        "description": "The critical reader's brief: five questions answered from the same\ndeterministic analysis as the suggestions.",
+        "properties": {
+          "disclaimer": {
+            "default": "",
+            "description": "What the brief cannot do: it does not establish scientific validity.",
+            "title": "Disclaimer",
+            "type": "string"
+          },
+          "questions": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewQuestion"
+            },
+            "title": "Questions",
+            "type": "array"
+          },
+          "sections": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "top_rules": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewRuleCount"
+            },
+            "title": "Top Rules",
+            "type": "array"
+          },
+          "words": {
+            "minimum": 0.0,
+            "title": "Words",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "source",
+          "sections",
+          "words",
+          "questions"
+        ],
+        "title": "ReviewReport",
+        "type": "object"
+      },
+      "ReviewRuleCount": {
+        "additionalProperties": false,
+        "properties": {
+          "count": {
+            "minimum": 0.0,
+            "title": "Count",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "short": {
+            "title": "Short",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "short",
+          "count"
+        ],
+        "title": "ReviewRuleCount",
+        "type": "object"
+      },
+      "RuleInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "fix_safety": {
+            "$ref": "#/components/schemas/FixSafety"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "learn_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Learn Ref"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "plain": {
+            "default": "",
+            "title": "Plain",
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Scope",
+            "default": "sentence",
+            "description": "Draft mode shows sentence-level rules only."
+          },
+          "sections_excluded": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sections Excluded"
+          },
+          "sections_only": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sections Only"
+          },
+          "short": {
+            "title": "Short",
+            "type": "string"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          },
+          "tier": {
+            "title": "Tier",
+            "type": "string"
+          },
+          "why": {
+            "title": "Why",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "category",
+          "short",
+          "why",
+          "source",
+          "tier",
+          "fix_safety"
+        ],
+        "title": "RuleInfo",
+        "type": "object"
+      },
+      "RulesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "checklists": {
+            "description": "Reporting checklists a caller can check against (S4).",
+            "items": {
+              "$ref": "#/components/schemas/ChecklistChoiceInfo"
+            },
+            "title": "Checklists",
+            "type": "array"
+          },
+          "profiles": {
+            "description": "Article types a caller can check as, in display order (S4).",
+            "items": {
+              "$ref": "#/components/schemas/ProfileChoice"
+            },
+            "title": "Profiles",
+            "type": "array"
+          },
+          "rules": {
+            "items": {
+              "$ref": "#/components/schemas/RuleInfo"
+            },
+            "title": "Rules",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rules"
+        ],
+        "title": "RulesResponse",
+        "type": "object"
+      },
+      "Scope": {
+        "description": "What a rule needs to judge: the sentence, or the whole document\n(figure citations, abbreviations defined once). Draft hides `document`.",
+        "enum": [
+          "sentence",
+          "document"
+        ],
+        "title": "Scope",
+        "type": "string"
+      },
+      "Segment": {
+        "additionalProperties": false,
+        "description": "A stretch of `document.text` that came from one source file.\n`text[start:end]` equals that file's `[source_start : source_start + (end - start)]`.",
+        "properties": {
+          "end": {
+            "minimum": 0.0,
+            "title": "End",
+            "type": "integer"
+          },
+          "path": {
+            "description": "Path inside the upload, e.g. sections/methods.tex.",
+            "title": "Path",
+            "type": "string"
+          },
+          "source_start": {
+            "description": "Offset in the source file, in code points.",
+            "minimum": 0.0,
+            "title": "Source Start",
+            "type": "integer"
+          },
+          "start": {
+            "minimum": 0.0,
+            "title": "Start",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "path",
+          "start",
+          "end",
+          "source_start"
+        ],
+        "title": "Segment",
+        "type": "object"
+      },
+      "SourceFormat": {
+        "description": "How an uploaded file was read.",
+        "enum": [
+          "latex",
+          "docx",
+          "markdown",
+          "plain"
+        ],
+        "title": "SourceFormat",
+        "type": "string"
+      },
+      "SourceInfo": {
+        "additionalProperties": false,
+        "properties": {
+          "filename": {
+            "description": "Echoed back to the caller; never logged.",
+            "title": "Filename",
+            "type": "string"
+          },
+          "format": {
+            "$ref": "#/components/schemas/SourceFormat"
+          },
+          "segments": {
+            "items": {
+              "$ref": "#/components/schemas/Segment"
+            },
+            "title": "Segments",
+            "type": "array"
+          },
+          "structure": {
+            "items": {
+              "$ref": "#/components/schemas/StructureItem"
+            },
+            "title": "Structure",
+            "type": "array"
+          },
+          "text": {
+            "description": "The text suggestions' spans index into: the source itself for .tex/.md/.txt, the expanded project for a .zip, the extracted paragraphs for .docx.",
+            "title": "Text",
+            "type": "string"
+          },
+          "warnings": {
+            "description": "Things skipped or approximated while reading the file; never document text.",
+            "items": {
+              "type": "string"
+            },
+            "title": "Warnings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "filename",
+          "format",
+          "text",
+          "segments"
+        ],
+        "title": "SourceInfo",
+        "type": "object"
+      },
+      "Span": {
+        "additionalProperties": false,
+        "properties": {
+          "col": {
+            "description": "1-based column of `start`; 0 if unknown.",
+            "minimum": 0.0,
+            "title": "Col",
+            "type": "integer"
+          },
+          "end": {
+            "description": "Offset into `content` in Unicode code points, exclusive.",
+            "minimum": 0.0,
+            "title": "End",
+            "type": "integer"
+          },
+          "line": {
+            "description": "1-based line of `start`; 0 if unknown.",
+            "minimum": 0.0,
+            "title": "Line",
+            "type": "integer"
+          },
+          "start": {
+            "description": "Offset into `content` in Unicode code points (Python str indices, NOT UTF-16 units), inclusive.",
+            "minimum": 0.0,
+            "title": "Start",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "start",
+          "end",
+          "line",
+          "col"
+        ],
+        "title": "Span",
+        "type": "object"
+      },
+      "StructureItem": {
+        "additionalProperties": false,
+        "description": "A figure, table, equation, caption or citation found in the source.\nKept as structure for the consistency and cross-reference checks (S2b).",
+        "properties": {
+          "end": {
+            "minimum": 0.0,
+            "title": "End",
+            "type": "integer"
+          },
+          "kind": {
+            "enum": [
+              "figure",
+              "table",
+              "equation",
+              "caption",
+              "citation"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "\\label key or Word bookmark, if any.",
+            "title": "Label"
+          },
+          "start": {
+            "minimum": 0.0,
+            "title": "Start",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "kind",
+          "start",
+          "end"
+        ],
+        "title": "StructureItem",
+        "type": "object"
+      },
+      "Suggestion": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "confidence": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "type": "number"
+          },
+          "fix_safety": {
+            "$ref": "#/components/schemas/FixSafety"
+          },
+          "id": {
+            "description": "Stable fingerprint of (rule_id, start, end, text); used by /v1/feedback in S2.",
+            "title": "Id",
+            "type": "string"
+          },
+          "learn_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Lesson id; Learn cards arrive in S4.",
+            "title": "Learn Ref"
+          },
+          "message": {
+            "description": "One-line rationale, always shown.",
+            "title": "Message",
+            "type": "string"
+          },
+          "plain": {
+            "default": "",
+            "description": "The explanation in everyday words, shown first; `why` is the fuller account.",
+            "title": "Plain",
+            "type": "string"
+          },
+          "replacement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A concrete fix, only from deterministic rules or a ≤40-char learned edit. Never generated prose.",
+            "title": "Replacement"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "rule_name": {
+            "title": "Rule Name",
+            "type": "string"
+          },
+          "section": {
+            "description": "Detected section, e.g. methods, discussion, unknown.",
+            "title": "Section",
+            "type": "string"
+          },
+          "source": {
+            "description": "Named provenance of the advice (CLAUDE.md #6).",
+            "title": "Source",
+            "type": "string"
+          },
+          "span": {
+            "$ref": "#/components/schemas/Span"
+          },
+          "text": {
+            "description": "The flagged source text, content[start:end].",
+            "title": "Text",
+            "type": "string"
+          },
+          "tier": {
+            "description": "spelling | grammar | gec | craft | lens — which engine produced it.",
+            "title": "Tier",
+            "type": "string"
+          },
+          "why": {
+            "description": "The teachable explanation.",
+            "title": "Why",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "rule_id",
+          "rule_name",
+          "category",
+          "tier",
+          "span",
+          "text",
+          "section",
+          "message",
+          "why",
+          "source",
+          "fix_safety",
+          "confidence"
+        ],
+        "title": "Suggestion",
+        "type": "object"
+      },
+      "TierHealth": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "default": "",
+            "title": "Detail",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "ok": {
+            "description": "Is this tier contributing suggestions right now?",
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "remedy": {
+            "default": "",
+            "title": "Remedy",
+            "type": "string"
+          },
+          "state": {
+            "description": "ready | missing | disabled | error | unstarted",
+            "title": "State",
+            "type": "string"
+          },
+          "tier": {
+            "description": "parser | spelling | grammar | gec | files | account (files: the LaTeX/.docx readers, shown only when one is missing; account: whether a signed-in caller's settings could be loaded)",
+            "title": "Tier",
+            "type": "string"
+          }
+        },
+        "required": [
+          "tier",
+          "label",
+          "ok",
+          "state"
+        ],
+        "title": "TierHealth",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "WordLocation": {
+        "additionalProperties": false,
+        "description": "How the add-in finds a suggestion in Word, which has no offsets:\nsearch `paragraph` for `snippet` and take match number `occurrence`.",
+        "properties": {
+          "end": {
+            "minimum": 0.0,
+            "title": "End",
+            "type": "integer"
+          },
+          "exact": {
+            "description": "False when the span is too long or unsafe to search for whole; `snippet` is then a prefix.",
+            "title": "Exact",
+            "type": "boolean"
+          },
+          "occurrence": {
+            "description": "0-based match number within the paragraph.",
+            "minimum": 0.0,
+            "title": "Occurrence",
+            "type": "integer"
+          },
+          "paragraph": {
+            "description": "Index into the request's paragraphs.",
+            "minimum": 0.0,
+            "title": "Paragraph",
+            "type": "integer"
+          },
+          "snippet": {
+            "description": "The text to search for.",
+            "title": "Snippet",
+            "type": "string"
+          },
+          "start": {
+            "description": "Offset in that paragraph's text (code points).",
+            "minimum": 0.0,
+            "title": "Start",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "paragraph",
+          "start",
+          "end",
+          "snippet",
+          "occurrence",
+          "exact"
+        ],
+        "title": "WordLocation",
+        "type": "object"
+      },
+      "WordParagraph": {
+        "additionalProperties": false,
+        "description": "One paragraph as Office JS reports it (`body.paragraphs`).",
+        "properties": {
+          "kind": {
+            "default": "body",
+            "description": "table: a table cell's paragraph (not prose).",
+            "enum": [
+              "body",
+              "table"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "style": {
+            "default": "",
+            "description": "Word style name, e.g. \"Heading 1\", \"Caption\", \"Normal\".",
+            "maxLength": 200,
+            "title": "Style",
+            "type": "string"
+          },
+          "text": {
+            "default": "",
+            "maxLength": 1000000,
+            "title": "Text",
+            "type": "string"
+          }
+        },
+        "title": "WordParagraph",
+        "type": "object"
+      },
+      "WordSuggestion": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "confidence": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "type": "number"
+          },
+          "fix_safety": {
+            "$ref": "#/components/schemas/FixSafety"
+          },
+          "id": {
+            "description": "Stable fingerprint of (rule_id, start, end, text); used by /v1/feedback in S2.",
+            "title": "Id",
+            "type": "string"
+          },
+          "learn_ref": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Lesson id; Learn cards arrive in S4.",
+            "title": "Learn Ref"
+          },
+          "location": {
+            "$ref": "#/components/schemas/WordLocation"
+          },
+          "message": {
+            "description": "One-line rationale, always shown.",
+            "title": "Message",
+            "type": "string"
+          },
+          "plain": {
+            "default": "",
+            "description": "The explanation in everyday words, shown first; `why` is the fuller account.",
+            "title": "Plain",
+            "type": "string"
+          },
+          "replacement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "A concrete fix, only from deterministic rules or a ≤40-char learned edit. Never generated prose.",
+            "title": "Replacement"
+          },
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "rule_name": {
+            "title": "Rule Name",
+            "type": "string"
+          },
+          "section": {
+            "description": "Detected section, e.g. methods, discussion, unknown.",
+            "title": "Section",
+            "type": "string"
+          },
+          "source": {
+            "description": "Named provenance of the advice (CLAUDE.md #6).",
+            "title": "Source",
+            "type": "string"
+          },
+          "span": {
+            "$ref": "#/components/schemas/Span"
+          },
+          "text": {
+            "description": "The flagged source text, content[start:end].",
+            "title": "Text",
+            "type": "string"
+          },
+          "tier": {
+            "description": "spelling | grammar | gec | craft | lens — which engine produced it.",
+            "title": "Tier",
+            "type": "string"
+          },
+          "why": {
+            "description": "The teachable explanation.",
+            "title": "Why",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "rule_id",
+          "rule_name",
+          "category",
+          "tier",
+          "span",
+          "text",
+          "section",
+          "message",
+          "why",
+          "source",
+          "fix_safety",
+          "confidence",
+          "location"
+        ],
+        "title": "WordSuggestion",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "description": "Document text is processed in memory for the duration of a request and is never stored, logged or used for training (ARCHITECTURE.md ADR-02).",
+    "summary": "Explainable, section-aware feedback on research writing. Advises; never drafts.",
+    "title": "Researchly Engine API",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/v1/analyze": {
+      "post": {
+        "description": "Check one document and return typed, explained suggestions.",
+        "operationId": "analyze",
+        "parameters": [
+          {
+            "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyzeResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Malformed request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in invalid or expired (unauthorized), or this needs an account (sign_in_required)"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Document too large"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request failed validation"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limited"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Engine error (no document text in the body)"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in could not be checked (auth_unavailable)"
+          }
+        },
+        "summary": "Analyze",
+        "tags": [
+          "analysis"
+        ]
+      }
+    },
+    "/v1/analyze-file": {
+      "post": {
+        "description": "Check an uploaded file: .docx, .tex, an Overleaf .zip, .md/.qmd/.Rmd\nor .txt. The body is the raw file; it is read in memory and discarded.",
+        "operationId": "analyzeFile",
+        "parameters": [
+          {
+            "description": "The file's name, percent-encoded (encodeURIComponent). Only its extension is used; it is never logged.",
+            "in": "header",
+            "name": "x-researchly-filename",
+            "required": true,
+            "schema": {
+              "description": "The file's name, percent-encoded (encodeURIComponent). Only its extension is used; it is never logged.",
+              "maxLength": 1024,
+              "title": "X-Researchly-Filename",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Optional JSON AnalyzeOptions.",
+            "in": "header",
+            "name": "x-researchly-options",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 16384,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Optional JSON AnalyzeOptions.",
+              "title": "X-Researchly-Options"
+            }
+          },
+          {
+            "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "format": "binary",
+                "type": "string"
+              }
+            }
+          },
+          "description": "The file's bytes.",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyzeFileResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Malformed request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in invalid or expired (unauthorized), or this needs an account (sign_in_required)"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Document too large"
+          },
+          "415": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not a supported file type (unsupported_file)"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request failed validation"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limited"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Engine error (no document text in the body)"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in could not be checked (auth_unavailable)"
+          }
+        },
+        "summary": "Analyze File",
+        "tags": [
+          "analysis"
+        ]
+      }
+    },
+    "/v1/analyze-word": {
+      "post": {
+        "description": "Check a Word document sent as its paragraphs (the Word add-in, S3).\nEach suggestion says which paragraph it is in and how to find it there,\nbecause Word has no character offsets.",
+        "operationId": "analyzeWord",
+        "parameters": [
+          {
+            "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+            "in": "header",
+            "name": "authorization",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "`Bearer <Supabase access token>` when signed in. Omit for anonymous use.",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeWordRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalyzeWordResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Malformed request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in invalid or expired (unauthorized), or this needs an account (sign_in_required)"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Document too large"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Request failed validation"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limited"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Engine error (no document text in the body)"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Sign-in could not be checked (auth_unavailable)"
+          }
+        },
+        "summary": "Analyze Word",
+        "tags": [
+          "analysis"
+        ]
+      }
+    },
+    "/v1/health": {
+      "get": {
+        "description": "Per-tier status. A degraded tier is reported, never hidden.",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/v1/learn": {
+      "get": {
+        "description": "Every Learn card, grouped in reading order (S4). No document text.",
+        "operationId": "listLearn",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Learn Index",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/v1/learn/{card_id}": {
+      "get": {
+        "description": "One Learn card, by the `learn_ref` a suggestion carries.",
+        "operationId": "getLearnCard",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "card_id",
+            "required": true,
+            "schema": {
+              "title": "Card Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnCard"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "No such card"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Learn Card",
+        "tags": [
+          "meta"
+        ]
+      }
+    },
+    "/v1/rules": {
+      "get": {
+        "description": "The rule registry with why/source — powers Explain and settings UIs.",
+        "operationId": "listRules",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RulesResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Rules",
+        "tags": [
+          "meta"
+        ]
+      }
+    }
+  }
+}

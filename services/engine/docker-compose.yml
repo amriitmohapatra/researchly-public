@@ -1,0 +1,46 @@
+# Local development: the engine + its LanguageTool sidecar, wired the way
+# Cloud Run wires them (deploy/cloudrun.service.yaml).
+#
+#   cd services/engine
+#   docker compose up --build
+#   curl localhost:8080/v1/health
+#
+# The build context is the repo root, filtered by /.dockerignore's allow-list
+# (no theses, course PDFs or ml/ data can enter the image).
+
+name: researchly
+
+services:
+  languagetool:
+    # Pinned by tag AND digest: 6.8 matches the LanguageTool version the
+    # noise-floor baseline was measured with (CLAUDE.md, 14.84/1000w).
+    image: erikvl87/languagetool:6.8@sha256:ef8fa12cbd485166c9ceeb7139d76d56d07707a624da6bb1fc1fbb5411750527
+    environment:
+      Java_Xms: 256m
+      Java_Xmx: 1536m
+    # Not published to the host: only the engine talks to it. Uncomment to
+    # point a local CLI at it (RESEARCHLY_LT_URL=http://localhost:8010).
+    # ports: ["8010:8010"]
+    healthcheck:          # the image's own check is a real /v2/check
+      test: ["CMD-SHELL", "curl -fsS --data 'language=en-US&text=a simple test' http://localhost:8010/v2/check >/dev/null || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+      start_period: 10s
+
+  engine:
+    build:
+      context: ../..
+      dockerfile: services/engine/Dockerfile
+    image: researchly-engine:dev
+    ports: ["8080:8080"]
+    environment:
+      RESEARCHLY_ENV: development            # CORS: http://localhost:3000
+      RESEARCHLY_LT_URL: http://languagetool:8010
+      RESEARCHLY_RATE_LIMIT_PER_MIN: "120"
+      # RESEARCHLY_ALLOWED_ORIGINS: http://localhost:3000,http://localhost:5173
+    depends_on:
+      languagetool:
+        condition: service_healthy           # warm-up then reaches grammar
+    read_only: true                          # stateless: nothing to write
+    tmpfs: ["/tmp"]

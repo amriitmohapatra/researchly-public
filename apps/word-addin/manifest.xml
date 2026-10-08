@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:type="TaskPaneApp">
+
+  <Id>8f4a2b1c-9d3e-4f5a-8b7c-2e1d0a9f6c3b</Id>
+  <Version>0.1.1</Version>
+  <ProviderName>Researchly (local)</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Researchly (local)" />
+  <Description DefaultValue="Section-aware, explainable writing suggestions for scientific documents. Runs entirely on your computer via a local server." />
+
+  <IconUrl DefaultValue="http://localhost:3517/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="http://localhost:3517/assets/icon-80.png" />
+  <SupportUrl DefaultValue="http://localhost:3517/taskpane.html" />
+
+  <AppDomains>
+    <AppDomain>http://localhost:3517</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.3">
+      <Set Name="WordApi" MinVersion="1.3" />
+    </Sets>
+  </Requirements>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="http://localhost:3517/taskpane.html" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>

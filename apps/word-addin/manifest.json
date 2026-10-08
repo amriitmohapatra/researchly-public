@@ -1,0 +1,114 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.17",
+  "version": "0.3.0",
+  "id": "bc4e3685-24bc-4220-a145-aba4059ccf5e",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Researchly",
+    "websiteUrl": "https://researchly-chi.vercel.app/",
+    "privacyUrl": "https://researchly-chi.vercel.app/",
+    "termsOfUseUrl": "https://researchly-chi.vercel.app/"
+  },
+  "name": {
+    "short": "Researchly",
+    "full": "Researchly for Word"
+  },
+  "description": {
+    "short": "Explained, section-aware suggestions for research writing.",
+    "full": "Researchly reads your Word document and gives explained, section-aware suggestions: each says what it noticed, why it matters and where the advice comes from. It advises; it never drafts. Text is analysed in memory and never stored, or checked on your own computer in local mode."
+  },
+  "icons": {
+    "outline": "assets-hosted/icon-outline-32.png",
+    "color": "assets-hosted/icon-192.png"
+  },
+  "accentColor": "#26344D",
+  "validDomains": [
+    "researchly-chi.vercel.app"
+  ],
+  "showLoadingIndicator": false,
+  "isFullScreen": false,
+  "defaultBlockUntilAdminAction": false,
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["document"],
+        "capabilities": [{ "name": "WordApi", "minVersion": "1.3" }]
+      },
+      "runtimes": [
+        {
+          "requirements": {
+            "capabilities": [{ "name": "WordApi", "minVersion": "1.3" }]
+          },
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://researchly-chi.vercel.app/word"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "ShowTaskPane",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "scopes": ["document"]
+          },
+          "contexts": ["default"],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "ResearchlyGroup",
+                  "label": "Researchly",
+                  "icons": [
+                    { "size": 16, "url": "https://researchly-chi.vercel.app/word/icon-16.png" },
+                    { "size": 32, "url": "https://researchly-chi.vercel.app/word/icon-32.png" },
+                    { "size": 80, "url": "https://researchly-chi.vercel.app/word/icon-80.png" }
+                  ],
+                  "controls": [
+                    {
+                      "id": "ResearchlyOpen",
+                      "type": "button",
+                      "label": "Researchly",
+                      "icons": [
+                        { "size": 16, "url": "https://researchly-chi.vercel.app/word/icon-16.png" },
+                        { "size": 32, "url": "https://researchly-chi.vercel.app/word/icon-32.png" },
+                        { "size": 80, "url": "https://researchly-chi.vercel.app/word/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Researchly",
+                        "description": "Open Researchly: explained, section-aware suggestions for this document."
+                      },
+                      "actionId": "ShowTaskPane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

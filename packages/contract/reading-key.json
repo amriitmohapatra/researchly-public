@@ -1,0 +1,27 @@
+{
+  "_comment": "The reading key's specimens (apps/web/components/ReadingKey.tsx). Each one is checked against the real engine by packages/core/tests/test_reading_key.py: before+flagged+after must make the engine flag exactly `flagged` with this category. Synthetic sentences only (CLAUDE.md: no third-party text).",
+  "correction": {
+    "before": "to understand ",
+    "flagged": "the the",
+    "after": " dynamics",
+    "note": "Likely an error. Worth fixing."
+  },
+  "improvement": {
+    "before": "",
+    "flagged": "In order to",
+    "after": " fit the model, we pooled weeks.",
+    "note": "Correct, but clearer if revised."
+  },
+  "convention": {
+    "before": "control is ",
+    "flagged": "proven",
+    "after": " to work",
+    "note": "A norm of research writing. Never an error; follow it if your journal does."
+  },
+  "preference": {
+    "before": "a ",
+    "flagged": "very",
+    "after": " large effect",
+    "note": "A matter of taste. Hidden unless you switch it on."
+  }
+}

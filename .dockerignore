@@ -1,0 +1,23 @@
+# Docker build context ALLOW-LIST — a privacy control, not a speed tweak.
+#
+# This repository holds third-party material that must never enter an image:
+# Sample_thesis_drafts/, the thesis text extracted under ml/dogfood/ and
+# legacy/, and the course PDFs in Notes_On_Writing/ (CLAUDE.md, "Before this
+# repository is ever made public"; ARCHITECTURE.md §9 "Repo hygiene").
+#
+# So everything is excluded, and only what an image needs is let back in.
+# Adding a line here puts that path into every image built from the repo
+# root: say why in the same change.
+
+*
+
+# services/engine/Dockerfile (the engine image)
+!packages/core/requirements.txt
+!packages/core/researchly/
+!services/engine/requirements.txt
+!services/engine/researchly_service/
+
+# Re-excluded inside the allowed folders: bytecode and local clutter.
+**/__pycache__
+**/*.pyc
+**/.DS_Store

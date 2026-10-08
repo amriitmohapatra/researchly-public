@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Researchly for Word, hosted (S3). The taskpane is served over HTTPS by the
+  web app on Vercel (apps/web, route /word) and checks with the hosted
+  engine, or with this computer's server.py when "This computer" is chosen
+  in its Settings (ADR-02 local mode).
+
+  Word for Mac drops a manifest that breaks a schema rule WITHOUT any
+  message (the add-in simply is not listed). Rules that bit us: every
+  resource id / resid is at most 32 characters (we had 33, 2026-10-04).
+  No <Requirements>: Word also hides an add-in whose requirement sets it
+  does not report; the taskpane checks API support at run time instead.
+  tests/test_word_addin_manifests.py enforces the documented limits.
+
+  Its Id differs from manifest.xml (the local, maintenance-only add-in), so
+  both can be installed side by side. Sideloading on a Mac: README.md,
+  "Hosted add-in (S3)".
+-->
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+  xsi:type="TaskPaneApp">
+
+  <Id>af2a002b-faeb-4373-aa52-40a63ffc9a06</Id>
+  <Version>0.3.1.0</Version>
+  <ProviderName>Researchly</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Researchly" />
+  <Description DefaultValue="Explained, section-aware suggestions for research writing. It advises; it never drafts. Text is analysed in memory and never stored, or checked on your own computer." />
+
+  <IconUrl DefaultValue="https://researchly-chi.vercel.app/word/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://researchly-chi.vercel.app/word/icon-64.png" />
+  <SupportUrl DefaultValue="https://researchly-chi.vercel.app/" />
+
+  <AppDomains>
+    <AppDomain>https://researchly-chi.vercel.app</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Document" />
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://researchly-chi.vercel.app/word" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <!-- A "Researchly" button on the Home tab opens the taskpane. -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="RL.GetStartedTitle" />
+            <Description resid="RL.GetStartedDesc" />
+            <LearnMoreUrl resid="RL.SiteUrl" />
+          </GetStarted>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Researchly.Group">
+                <Label resid="RL.GroupLabel" />
+                <Icon>
+                  <bt:Image size="16" resid="RL.Icon16" />
+                  <bt:Image size="32" resid="RL.Icon32" />
+                  <bt:Image size="80" resid="RL.Icon80" />
+                </Icon>
+                <Control xsi:type="Button" id="Researchly.Open">
+                  <Label resid="RL.OpenLabel" />
+                  <Supertip>
+                    <Title resid="RL.OpenLabel" />
+                    <Description resid="RL.OpenTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="RL.Icon16" />
+                    <bt:Image size="32" resid="RL.Icon32" />
+                    <bt:Image size="80" resid="RL.Icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ResearchlyTaskpane</TaskpaneId>
+                    <SourceLocation resid="RL.TaskpaneUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="RL.Icon16" DefaultValue="https://researchly-chi.vercel.app/word/icon-16.png" />
+        <bt:Image id="RL.Icon32" DefaultValue="https://researchly-chi.vercel.app/word/icon-32.png" />
+        <bt:Image id="RL.Icon80" DefaultValue="https://researchly-chi.vercel.app/word/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="RL.TaskpaneUrl" DefaultValue="https://researchly-chi.vercel.app/word" />
+        <bt:Url id="RL.SiteUrl" DefaultValue="https://researchly-chi.vercel.app/" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="RL.GroupLabel" DefaultValue="Researchly" />
+        <bt:String id="RL.OpenLabel" DefaultValue="Researchly" />
+        <bt:String id="RL.GetStartedTitle" DefaultValue="Researchly is ready" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="RL.OpenTip" DefaultValue="Open Researchly: explained, section-aware suggestions for this document." />
+        <bt:String id="RL.GetStartedDesc" DefaultValue="Choose Researchly on the Home tab, then Check document." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

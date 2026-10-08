@@ -1,0 +1,8 @@
+# Researchly desktop (macOS menu-bar app) — on top of the prototype's
+# existing environment (spacy + model already installed for the CLI).
+pyobjc-core>=9
+pyobjc-framework-Cocoa>=9
+pyobjc-framework-WebKit>=9
+pyobjc-framework-Quartz>=9
+pyobjc-framework-ApplicationServices>=9
+py2app>=0.28        # only needed to build Researchly.app / the .dmg

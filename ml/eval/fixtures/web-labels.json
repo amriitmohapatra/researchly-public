@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "labels": [
+    {
+      "paragraph": 1,
+      "rule_id": "G106",
+      "category": "improvement",
+      "section": "introduction",
+      "verdict": "useful"
+    },
+    {
+      "paragraph": 1,
+      "rule_id": "S001",
+      "category": "correction",
+      "section": "introduction",
+      "verdict": "wrong"
+    },
+    {
+      "paragraph": 2,
+      "rule_id": "C201",
+      "category": "convention",
+      "section": "discussion",
+      "verdict": "unsure"
+    },
+    {
+      "paragraph": 2,
+      "rule_id": "C201",
+      "category": "convention",
+      "section": "discussion",
+      "verdict": "useful"
+    }
+  ]
+}

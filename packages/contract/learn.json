@@ -1,0 +1,416 @@
+{
+  "cards": [
+    {
+      "id": "subject-and-verb",
+      "title": "Keep the subject close to its verb",
+      "group": "Sentences",
+      "summary": "Readers wait for the verb; a long interruption loses them.",
+      "lesson": "Readers hold the subject in mind until the verb arrives and tells them what it did. A long interruption between the two (a list, a clause, a string of citations) makes them wait, and many lose the thread. Move the interruption before the subject or after the verb.",
+      "before": "The reproduction number, which we estimated for each district from weekly counts in the national register with a renewal model and a seven-day generation interval, fell below one in June.",
+      "after": "The reproduction number fell below one in June. We estimated it for each district from weekly counts in the national register, with a renewal model and a seven-day generation interval.",
+      "habit": "Underline the subject and the verb of each long sentence. If more than a line separates them, move what sits between.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Keep subject and verb close together (after Gopen & Swan)",
+      "rules": [
+        "G101"
+      ],
+      "moves": []
+    },
+    {
+      "id": "actions-in-verbs",
+      "title": "Put the action in the verb",
+      "group": "Sentences",
+      "summary": "Actions hidden in nouns make sentences long and weak.",
+      "lesson": "Scientific prose often hides its actions in nouns: 'performed an estimation of', 'carried out an analysis of'. The sentence grows, the verb weakens, and the reader has to unpack it. When a noun ending in -tion, -ment or -ance hides what someone did, try the verb instead.",
+      "before": "An estimation of transmission was performed through the application of a renewal model.",
+      "after": "We estimated transmission with a renewal model.",
+      "habit": "Circle every -tion noun in a paragraph. Wherever someone does that action, try saying it as a verb.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Put the action in the verb (after Gopen & Swan)",
+      "rules": [
+        "G102",
+        "G103"
+      ],
+      "moves": []
+    },
+    {
+      "id": "passive-voice",
+      "title": "Active and passive voice",
+      "group": "Sentences",
+      "summary": "Passive suits Methods; a named doer is usually better active.",
+      "lesson": "Passive is right when the doer does not matter, which is why it is fine in Methods ('samples were stored at 4 °C'). When the doer is named in a 'by' phrase, the active form is shorter and puts the actor first. Choose by what belongs at the start of the sentence.",
+      "before": "A similar pattern was reported by Lim and colleagues in a neighbouring region.",
+      "after": "Lim and colleagues reported a similar pattern in a neighbouring region.",
+      "habit": "In your Discussion, look for 'by' after 'was' or 'were'. Each one is a sentence you could turn round.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Put whose story it is in the topic position (after Gopen & Swan)” and “Language and tone”",
+      "rules": [
+        "G104"
+      ],
+      "moves": []
+    },
+    {
+      "id": "topic-and-stress",
+      "title": "Begin with the familiar, end with the news",
+      "group": "Sentences",
+      "summary": "The start says whose story it is; the end carries the point.",
+      "lesson": "Readers expect the start of a sentence to say whose story it is and the end to carry what is new. Openers such as 'There are' or 'It is important to note that' spend the start on nothing, and endings such as 'as previously reported' push the finding into the middle. Start with the subject that matters and end on the news.",
+      "before": "It is important to note that transmission was highest in the densest district, according to our estimates.",
+      "after": "In our estimates, transmission was highest in the densest district.",
+      "habit": "Read only the last few words of each sentence in a paragraph. They should be the points you want remembered.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Put the emphasis at the end, the stress position (after Gopen & Swan)” and “Put whose story it is in the topic position (after Gopen & Swan)”",
+      "rules": [
+        "G105",
+        "G108"
+      ],
+      "moves": []
+    },
+    {
+      "id": "long-sentences",
+      "title": "One idea per sentence",
+      "group": "Sentences",
+      "summary": "A very long sentence usually carries two or three ideas.",
+      "lesson": "A sentence of more than about fifty words usually carries two or three ideas, and the reader must decide which one matters. Some long sentences work, such as a careful definition or a list, so this is a prompt to check, not a rule to obey. Where the ideas are separate, give each its own sentence.",
+      "before": "We fitted the model to the three districts jointly because a joint fit lets them share information about the incubation period, which no single district identifies well, and because it shows whether the districts differ in transmission or only in reporting, which decides where control should go first.",
+      "after": "We fitted the model to the three districts jointly. A joint fit lets them share information about the incubation period, which no single district identifies well. It also shows whether the districts differ in transmission or only in reporting, which decides where control should go first.",
+      "habit": "If you need to breathe twice to read a sentence aloud, look for the place to split it.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): The sentence: Gopen & Swan's reader-expectation principles",
+      "rules": [
+        "G106"
+      ],
+      "moves": []
+    },
+    {
+      "id": "noun-stacks",
+      "title": "Unpack stacked nouns",
+      "group": "Sentences",
+      "summary": "Four nouns in a row make the reader guess how they relate.",
+      "lesson": "A run of four or more nouns ('district case report delay distribution') leaves the reader to work out how each relates to the next. Unpack it with a preposition or two, so the relations are said rather than guessed. Readers from a neighbouring field will thank you most.",
+      "before": "The district case report delay distribution was estimated first.",
+      "after": "We first estimated the distribution of delays in reporting cases from each district.",
+      "habit": "Look for runs of nouns with no 'of', 'in' or 'for' between them, and read each run to a colleague outside your field.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “The sentence: Gopen & Swan's reader-expectation principles” and “Write for a reader who lacks one of your fields”",
+      "rules": [
+        "G107"
+      ],
+      "moves": []
+    },
+    {
+      "id": "flow",
+      "title": "Link one sentence to the next",
+      "group": "Sentences",
+      "summary": "Each sentence should pick up something from the one before.",
+      "lesson": "A paragraph flows when each sentence picks up something from the one before. Two 'However's in a row make the reader turn twice, and a bare 'This' at the start of a sentence makes them guess what 'this' is. Name the thing ('This delay'), and keep contrast words for real changes of direction.",
+      "before": "Cases rose in May. However, reporting was delayed. However, the peak was clear. This suggests early control.",
+      "after": "Cases rose in May. Reporting was delayed, but the peak was still clear. This early peak suggests that control should start in April.",
+      "habit": "Read only the first three words of each sentence in a paragraph: they should hand the reader from one idea to the next.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): The paragraph; Amriit's learnings from scientific-writing training (Researchly notes)",
+      "rules": [
+        "E702",
+        "E703"
+      ],
+      "moves": []
+    },
+    {
+      "id": "concise-words",
+      "title": "Say it in fewer words",
+      "group": "Words",
+      "summary": "Padding phrases add length, not meaning.",
+      "lesson": "Phrases such as 'due to the fact that', 'it should be noted that', 'each and every' and 'in terms of' add length without meaning. Readers skim them, and they dilute the sentences that matter. Use the short form: 'because', the point itself, 'each', or the relation you actually mean.",
+      "before": "Due to the fact that reporting was delayed, it should be noted that the most recent weeks were excluded in terms of the fit.",
+      "after": "Because reporting was delayed, we excluded the most recent weeks from the fit.",
+      "habit": "Cut every phrase you could delete without changing what the sentence claims.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Language and tone",
+      "rules": [
+        "W202",
+        "W205",
+        "W206",
+        "W209"
+      ],
+      "moves": []
+    },
+    {
+      "id": "plain-words",
+      "title": "Plain, concrete words",
+      "group": "Words",
+      "summary": "Grand words and vague adjectives say less than plain ones.",
+      "lesson": "Grand words ('utilise', 'facilitate'), buzzwords ('novel', 'cutting-edge'), intensifiers ('very', 'extremely') and vague comparisons ('relatively high') sound weighty but say less than plain ones. Prefer the ordinary word, and replace an adjective with the number or the comparison it stands for: higher than what, and by how much?",
+      "before": "This novel framework sheds light on the relatively high burden in very dense districts.",
+      "after": "The model attributes 60% of cases to the two densest districts, which hold 35% of the population.",
+      "habit": "For every adjective of size or importance, ask: compared with what? Then give that comparison.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Language and tone; Amriit's learnings from scientific-writing training (Researchly notes)",
+      "rules": [
+        "W201",
+        "W203",
+        "W204",
+        "E701",
+        "E706"
+      ],
+      "moves": []
+    },
+    {
+      "id": "abbreviations-and-terms",
+      "title": "Define once, then keep to it",
+      "group": "Words",
+      "summary": "One definition, before first use; one form of each term.",
+      "lesson": "Define an abbreviation at its first use, once, and then use it. An abbreviation used only once is not worth defining. Keep one form of each term throughout: 'dataset' and 'data set' on the same page make a careful reader wonder whether they are two things.",
+      "before": "The extrinsic incubation period (EIP) shortens with heat. Later: the extrinsic incubation period (EIP) was fixed, and the data set and the dataset were merged.",
+      "after": "The extrinsic incubation period (EIP) shortens with heat. Later: the EIP was fixed at ten days, and the two datasets were merged.",
+      "habit": "Search for each abbreviation's definition: there should be exactly one, before its first use.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Write for a reader who lacks one of your fields",
+      "rules": [
+        "F601",
+        "F612",
+        "F613",
+        "W211"
+      ],
+      "moves": []
+    },
+    {
+      "id": "hedging",
+      "title": "Calibrate your confidence",
+      "group": "Claims and evidence",
+      "summary": "One qualifier, matched to the evidence, beats several.",
+      "lesson": "Hedges ('may', 'suggest') and boosters ('clearly', 'obviously') tell the reader how far to trust a claim. Stacked hedges ('may possibly suggest') read as doubt about the writing, not the science, and 'clearly' asks the reader to agree instead of showing why. Use one qualifier that matches the evidence, and let the evidence carry the confidence.",
+      "before": "These results may possibly suggest that the campaign clearly reduced transmission.",
+      "after": "These results suggest that the campaign reduced transmission.",
+      "habit": "Read your Discussion for hedges and boosters only. Each claim should carry one, matched to its evidence.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Warranting your arguments” and “Uncertainty is not a caveat, it is the finding”",
+      "rules": [
+        "C301",
+        "C305"
+      ],
+      "moves": []
+    },
+    {
+      "id": "overclaiming",
+      "title": "Claim no more than the evidence shows",
+      "group": "Claims and evidence",
+      "summary": "'Proves' invites a reviewer to find the exception.",
+      "lesson": "'Prove', 'conclusively' and 'establishes' belong to mathematics and to rare, overwhelming evidence. A model fit or an observational study supports, suggests or is consistent with a claim. Overclaiming invites a reviewer to look for the one case that breaks it.",
+      "before": "This proves that housing density drives transmission.",
+      "after": "This is consistent with housing density driving transmission, although the districts also differ in other ways.",
+      "habit": "Search your draft for 'prove' and 'demonstrate'. Keep them only where a reviewer could not reasonably disagree.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Warranting your arguments",
+      "rules": [
+        "C302"
+      ],
+      "moves": []
+    },
+    {
+      "id": "causal-language",
+      "title": "Causal words need a causal design",
+      "group": "Claims and evidence",
+      "summary": "Say what your design supports: cause, or association.",
+      "lesson": "Verbs such as 'reduced', 'caused' and 'drives' claim that one thing made another happen. That is fair from a randomised trial and risky from observational data or a model, where 'was associated with' or 'in the model, X reduced Y' is accurate. You know your design; the point is to say what it supports.",
+      "before": "Vector control reduced dengue incidence by 30%.",
+      "after": "Districts with vector control had 30% lower incidence; the difference may partly reflect other differences between districts.",
+      "habit": "For each causal verb, ask what would have to be true of the design for a sceptic to accept it.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): A model is an argument, not an oracle",
+      "rules": [
+        "C303"
+      ],
+      "moves": []
+    },
+    {
+      "id": "significance",
+      "title": "Say which 'significant' you mean",
+      "group": "Claims and evidence",
+      "summary": "A passed test, or an effect that matters? Give the number.",
+      "lesson": "'Significant' can mean that a statistical test passed or that an effect is large enough to matter, and readers cannot tell which. If you mean the test, give the estimate and its interval; if you mean importance, give the size of the effect and say why it matters.",
+      "before": "The effect of rainfall was significant.",
+      "after": "Each additional 10 mm of weekly rainfall was associated with 4% more cases (95% CI 1% to 7%).",
+      "habit": "Replace every bare 'significant' with the number it summarises.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Uncertainty is not a caveat, it is the finding",
+      "rules": [
+        "C304"
+      ],
+      "moves": []
+    },
+    {
+      "id": "who-says",
+      "title": "Who says? Cite what is known and what is new",
+      "group": "Claims and evidence",
+      "summary": "Claims about the literature need a citation or a boundary.",
+      "lesson": "'It is known that', 'is considered to be' and 'has never been studied' are claims about the literature. Without a citation the reader cannot check them, and an absolute 'never' can be refuted by one paper. Cite the source, or narrow the claim to what you checked: 'to our knowledge'.",
+      "before": "It is known that dengue transmission is sensitive to temperature, and this has never been studied in lowland districts.",
+      "after": "Dengue transmission is sensitive to temperature (Lim et al., 2021). To our knowledge, no study has measured this in lowland districts.",
+      "habit": "Highlight every sentence about what is known or unknown. Each one needs a citation or 'to our knowledge'.",
+      "source": "Amriit's learnings from scientific-writing training (Researchly notes); The Craft of Scientific Writing (Researchly's founding guide): Warranting your arguments",
+      "rules": [
+        "E704",
+        "E705"
+      ],
+      "moves": []
+    },
+    {
+      "id": "warranting",
+      "title": "Claims need a warrant",
+      "group": "Claims and evidence",
+      "summary": "Say why the evidence supports the claim: the 'because'.",
+      "lesson": "An argument has three parts: the claim, the evidence for it, and the warrant, which says why that evidence supports that claim. Discussions often state the claim and show the data but leave the link unsaid. Say it: 'this suggests that ..., because ...'.",
+      "before": "Transmission was highest in Marrowick. Housing is densest there. Control should focus on Marrowick.",
+      "after": "Transmission was highest in Marrowick, where housing is densest; denser housing brings people and mosquitoes closer, which would raise transmission. Control should therefore start there.",
+      "habit": "For each claim in your Discussion, find its 'because'. If it is missing, add it.",
+      "source": "M. Wallace & A. Wray (2016), Critical Reading and Writing for Postgraduates, 3rd ed., SAGE; S. E. Toulmin (1958), The Uses of Argument, Cambridge University Press (claim, grounds, warrant); The Craft of Scientific Writing (Researchly's founding guide): Warranting your arguments",
+      "rules": [],
+      "moves": []
+    },
+    {
+      "id": "figures-and-tables",
+      "title": "Figures and tables carry the argument",
+      "group": "Figures, tables and numbers",
+      "summary": "Cite each one, in order; lead with the finding, not the figure.",
+      "lesson": "Cite every figure and table in the text, in the order they are numbered, before they appear; a reference to a figure that does not exist is a broken promise. A caption should let the figure be read on its own: what is plotted, and what the reader should see. In the text, lead with the finding and point to the figure in brackets, rather than opening with 'Figure 1 shows'.",
+      "before": "Figure 2 shows the model fit. Figure 1 shows the cases by district.",
+      "after": "Cases peaked three weeks earlier in Marrowick than in Oldmere (Figure 1), and the model reproduced the timing in every district (Figure 2).",
+      "habit": "List your figures and tables in the order the text first cites them. The list should read 1, 2, 3.",
+      "source": "International Committee of Medical Journal Editors, Recommendations for the Conduct, Reporting, Editing, and Publication of Scholarly Work in Medical Journals (tables and figures); The Craft of Scientific Writing (Researchly's founding guide): Figures are arguments too; Amriit's learnings from scientific-writing training (Researchly notes)",
+      "rules": [
+        "X101",
+        "X102",
+        "X103",
+        "X104",
+        "X202",
+        "E707"
+      ],
+      "moves": []
+    },
+    {
+      "id": "numbers-and-units",
+      "title": "Numbers that agree",
+      "group": "Figures, tables and numbers",
+      "summary": "A number in the text must be the number in its table.",
+      "lesson": "A number quoted in the text should be the number in the table it cites; one mismatch makes a reviewer distrust every other number. Write a unit the same way every time, with a space after the number, and do not start a sentence with a numeral: spell it out or rephrase.",
+      "before": "The attack rate was 4.8% in Marrowick (Table 1, which says 4.2%). 26 weeks were analysed, with incubation of 5.9days.",
+      "after": "The attack rate was 4.2% in Marrowick (Table 1). We analysed 26 weeks, with a mean incubation period of 5.9 days.",
+      "habit": "Check each number in your Results against its table, line by line, once, before you submit.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Language and tone; BIPM, The International System of Units (SI Brochure), 9th ed., on writing a number with its unit; AMA Manual of Style, 11th ed., on numbers at the start of a sentence",
+      "rules": [
+        "X401",
+        "N101",
+        "N102"
+      ],
+      "moves": []
+    },
+    {
+      "id": "equations",
+      "title": "Equations are sentences",
+      "group": "Figures, tables and numbers",
+      "summary": "Lead in, display, then say what the symbols mean.",
+      "lesson": "A displayed equation is part of the sentence around it: the words before it lead in ('the force of infection is'), and the words after it interpret it ('where N is the population'). An equation dropped in after a full stop arrives unannounced. Number an equation only if the text refers to it.",
+      "before": "We assume mass action. [λ = βI/N] N is the population.",
+      "after": "Under mass action, the force of infection is [λ = βI/N], where N is the population.",
+      "habit": "Read each equation aloud as part of its sentence. If the sentence does not survive, add the lead-in or the 'where'.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Equations are sentences — make them grammatical",
+      "rules": [
+        "X301",
+        "X302"
+      ],
+      "moves": []
+    },
+    {
+      "id": "abstract",
+      "title": "The abstract in six moves",
+      "group": "Structure and argument",
+      "summary": "Known, missing, asked, done, found, why it matters.",
+      "lesson": "Readers decide from the abstract whether to read on. A good abstract answers six things in order: what is known, what is missing, what you asked, how you did it, what you found, and why it matters. Give at least one real finding with its size; 'results will be discussed' tells the reader nothing.",
+      "before": "Dengue is common. We fitted a model to case data. The results are discussed in terms of their implications.",
+      "after": "Dengue seasons vary widely between districts, but why is unclear. We asked whether transmission or reporting explains the difference, fitting a transmission model to weekly cases from three districts. Transmission was twice as high in the densest district, while reporting was similar, so control should start there.",
+      "habit": "Label each sentence of your abstract with one of the six moves. Every move should appear once, in order.",
+      "source": "Amriit's learnings from scientific-writing training (Researchly notes)",
+      "rules": [
+        "AB801",
+        "AB802"
+      ],
+      "moves": []
+    },
+    {
+      "id": "introduction",
+      "title": "The introduction: territory, gap, aim",
+      "group": "Structure and argument",
+      "summary": "Why it matters, what is unknown, how this work fills it.",
+      "lesson": "An introduction makes three moves: why the area matters, what is still unknown, and how this work fills that gap. The gap is the hinge; without it the reader cannot see why the work was needed. A list of earlier studies ('There are many studies on ...') is not a gap. The gap is what those studies leave open.",
+      "before": "There are many studies on dengue. Lim et al. studied temperature. Quintero studied rainfall. We studied three districts.",
+      "after": "Dengue seasons vary widely between districts. Earlier studies linked this to temperature and rainfall, but none separated transmission from reporting. We therefore asked whether the districts differ in transmission or only in what is reported.",
+      "habit": "Find the sentence in your introduction that says what is unknown. If you cannot point to it, write it.",
+      "source": "J. M. Swales (1990), Genre Analysis, on the three moves of a research introduction; W. Shehzad (2008), \"Move two: establishing a niche\"; The Craft of Scientific Writing (Researchly's founding guide): The Introduction, move by move",
+      "rules": [
+        "D902",
+        "L901"
+      ],
+      "moves": []
+    },
+    {
+      "id": "methods-reporting",
+      "title": "Methods a reader could repeat",
+      "group": "Structure and argument",
+      "summary": "The data first, then the analysis and its assumptions.",
+      "lesson": "A methods section lets a reader judge the results and, in principle, repeat the work. Start with the data (what, where, when, on whom), then the analysis: the model or test, how it was fitted, and the assumptions it makes. Passive voice is fine here, because the procedure matters more than who did it.",
+      "before": "A model was used on the data.",
+      "after": "We used weekly dengue counts from the clinics of three districts, April to September 2022, and fitted an SEIR model to them by Hamiltonian Monte Carlo, assuming a mean infectious period of five days.",
+      "habit": "Give your methods to a colleague and ask what they would need to redo the analysis. Add it.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Structure from the top down: the paper is a story” and “Reproducibility is part of the writing”",
+      "rules": [],
+      "moves": []
+    },
+    {
+      "id": "results-reporting",
+      "title": "Results: the finding first",
+      "group": "Structure and argument",
+      "summary": "Open with the finding; give the number and its uncertainty.",
+      "lesson": "Each results paragraph should open with the finding, give the number with its uncertainty, and point to the figure or table that shows it. Keep interpretation for the discussion, but do say what the number is: an estimate without its interval is half a result.",
+      "before": "Table 2 shows the estimates.",
+      "after": "The basic reproduction number was highest in Marrowick, at 2.1 (95% CrI 1.8 to 2.4; Table 2).",
+      "habit": "Check that every paragraph of your Results starts with a finding, not with a figure.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Structure from the top down: the paper is a story”, “Uncertainty is not a caveat, it is the finding” and “Figures are arguments too”",
+      "rules": [],
+      "moves": []
+    },
+    {
+      "id": "discussion",
+      "title": "The discussion: from finding to meaning",
+      "group": "Structure and argument",
+      "summary": "Finding, meaning, earlier work, limits, what should change.",
+      "lesson": "A discussion widens out again. Restate the main finding in one sentence, say what it means and why, compare it with earlier work, state the limitations yourself, and end with what should change and for whom. A limitation you state is a boundary; one a reviewer finds is a rebuttal.",
+      "before": "Our results are interesting. Further research is needed.",
+      "after": "Transmission, not reporting, explained the difference between districts, as earlier work in a neighbouring region suggested. Our weekly data cannot show the direction of spread. Vector control should start first in the densest district.",
+      "habit": "Mark the five moves in your discussion's margin: finding, meaning, comparison, limitation, implication.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): “Structure from the top down: the paper is a story” and “Translate for the decision-maker”; M. Wallace & A. Wray (2016), Critical Reading and Writing for Postgraduates, 3rd ed., SAGE",
+      "rules": [],
+      "moves": []
+    },
+    {
+      "id": "spelling-and-grammar",
+      "title": "Spelling, grammar and slips",
+      "group": "Mechanics",
+      "summary": "Small slips cost trust out of proportion to their size.",
+      "lesson": "A reader who meets a misspelt word or a doubled 'the' starts to wonder what else was rushed. The checks catch most slips, but they also flag technical words they do not know: add those to your dictionary once. Pick one spelling convention, UK or US, for the whole document, and keep contractions such as 'don't' for informal writing.",
+      "before": "We fitted an renewal model to the the weekly counts.",
+      "after": "We fitted a renewal model to the weekly counts.",
+      "habit": "Before you send a draft, read it aloud once, slowly: the ear catches doubled words the eye skips.",
+      "source": "The Craft of Scientific Writing (Researchly's founding guide): Language and tone; LanguageTool, open-source grammar checker; SymSpell spelling engine with Researchly's scientific lexicon",
+      "rules": [
+        "S001",
+        "LT001",
+        "W207",
+        "GEC001",
+        "W210",
+        "W208"
+      ],
+      "moves": []
+    },
+    {
+      "id": "headings",
+      "title": "Headings as structure",
+      "group": "Mechanics",
+      "summary": "Heading styles for headings only; body styles for text.",
+      "lesson": "In Word, the heading styles build the navigation pane, the table of contents and the section structure every checker reads. A paragraph of body text in a heading style breaks all three, and a heading typed as bold body text is invisible to them. Use heading styles for headings and body styles for text.",
+      "before": "A whole paragraph of text formatted as Heading 1.",
+      "after": "The word 'Methods' in Heading 1, and the paragraph after it in the Normal style.",
+      "habit": "Open Word's navigation pane: it should list only your headings, in order.",
+      "source": "Microsoft Word documentation on heading styles, which build the navigation pane and the table of contents",
+      "rules": [
+        "X501"
+      ],
+      "moves": []
+    }
+  ]
+}

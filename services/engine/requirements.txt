@@ -1,0 +1,34 @@
+# Runtime dependencies of the hosted engine service (services/engine).
+# The core's own floors (packages/core/requirements.txt) are applied as pip
+# constraints in the Dockerfile; this file adds the service and pins majors.
+# Dev/test extras live in requirements-dev.txt.
+
+# --- HTTP layer -------------------------------------------------------------
+# FastAPI/pydantic are pinned to a minor because they render the OpenAPI
+# document: a bump can change packages/contract/openapi.json, which CI's
+# contract-drift check would (correctly) fail. Bump deliberately, then
+# regenerate the contract.
+fastapi>=0.142,<0.143
+pydantic>=2.13,<3
+uvicorn>=0.54,<1
+
+# --- engine (packages/core) -------------------------------------------------
+spacy>=3.8,<3.9
+# The parser model, pinned to the build matching spaCy 3.8 so an image build
+# never resolves a different model than the one tests ran against.
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+symspellpy>=6.9,<7
+# Client only: in the service, LanguageTool runs as a sidecar container and
+# is reached over HTTP (RESEARCHLY_LT_URL); no Java in this image.
+# GPL-3.0-only — fine server-side (PLAN.md Inbox note).
+language-tool-python>=3.0,<4
+tomli>=2.0; python_version < "3.11"
+
+# --- accounts (S2) ----------------------------------------------------------
+# Verifies Supabase access tokens against the project's public keys (JWKS).
+# [crypto] pulls in `cryptography` for RS256/ES256. MIT / Apache-2.0+BSD.
+PyJWT[crypto]>=2.10,<3
+
+# --- file adapters (S2, packages/core/researchly/ingest) --------------------
+pylatexenc>=2.10,<3        # LaTeX node walk, keeps positions. MIT.
+defusedxml>=0.7,<1         # .docx XML without XXE / entity bombs. PSF-2.0.

@@ -1,0 +1,130 @@
+# Cloud Run service: Researchly engine + LanguageTool sidecar (ADR-03).
+#
+# Placeholders, filled by the deploy workflow (deploy/render_service.py):
+#   ${ENGINE_IMAGE}     asia-southeast1-docker.pkg.dev/${PROJECT_ID}/researchly/engine@sha256:...
+#   ${ALLOWED_ORIGINS}  comma-separated browser origins (the Vercel app)
+#   ${PROJECT_ID}       GCP project id
+#   ${SUPABASE_URL}, ${SUPABASE_PUBLISHABLE_KEY}   optional (S2 accounts)
+#
+#   python3 services/engine/deploy/render_service.py < cloudrun.service.yaml > /tmp/svc.yaml
+#   gcloud run services replace /tmp/svc.yaml --region asia-southeast1
+#
+# The browser calls the engine directly (S1 has no accounts), so the service
+# must be publicly invokable: .github/workflows/deploy-engine.yml grants
+# roles/run.invoker to allUsers after each deploy (the service does not exist
+# yet when bootstrap-gcp.sh runs). Abuse is bounded by the per-IP rate limit,
+# the body cap and maxScale below.
+#
+# Region is pinned to Singapore (owner decision D3; ADR-02 "pinned region").
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: researchly-engine
+  labels:
+    cloud.googleapis.com/location: asia-southeast1
+  annotations:
+    run.googleapis.com/ingress: all
+spec:
+  template:
+    metadata:
+      annotations:
+        # Scale to zero between uses (free tier). In TERM TIME set minScale
+        # to "1" (~$10–15/month, ARCHITECTURE.md §5.2) so no student meets a
+        # cold start (measured: ~5 s to warm, see services/engine/README.md).
+        autoscaling.knative.dev/minScale: "0"
+        # Cost cap: S1 is public and unauthenticated.
+        autoscaling.knative.dev/maxScale: "2"
+        run.googleapis.com/execution-environment: gen2
+        # Extra CPU during startup: spaCy load + warm-up + the JVM starting.
+        run.googleapis.com/startup-cpu-boost: "true"
+        # Request-based billing; CPU is throttled between requests.
+        run.googleapis.com/cpu-throttling: "true"
+        # Start the engine only after LanguageTool's startup probe passes,
+        # so the engine's warm-up reaches a live grammar tier.
+        run.googleapis.com/container-dependencies: '{"engine":["languagetool"]}'
+    spec:
+      # ONE request per instance. The engine serialises analyses with a
+      # process-wide lock (spaCy and the LanguageTool client are shared,
+      # not documented as thread-safe: researchly_service/engine_adapter.py).
+      # Concurrency > 1 would only queue requests behind that lock, where
+      # Cloud Run can't see them; at 1, Cloud Run routes the next request to
+      # another instance (up to maxScale) or queues it itself.
+      containerConcurrency: 1
+      # A 1M-character document (the contract's cap) took 74 s end to end on
+      # a 4-core dev machine. 300 s leaves room for a slower vCPU. The
+      # browser waits just under this (apps/web/lib/engine.ts
+      # ANALYZE_TIMEOUT_MS); a unit test there keeps the two in step.
+      timeoutSeconds: 300
+      serviceAccountName: researchly-engine@${PROJECT_ID}.iam.gserviceaccount.com
+      containers:
+        - name: engine
+          image: ${ENGINE_IMAGE}
+          ports:
+            - name: http1
+              containerPort: 8080
+          env:
+            - name: RESEARCHLY_MODE
+              value: service
+            - name: RESEARCHLY_ENV
+              value: production
+            - name: RESEARCHLY_ALLOWED_ORIGINS
+              value: "${ALLOWED_ORIGINS}"
+            - name: RESEARCHLY_LT_URL           # the sidecar, same instance
+              value: http://localhost:8010
+            # Cloud Run's front end appends exactly one X-Forwarded-For entry
+            # (the real client); entries left of it are client-supplied.
+            - name: RESEARCHLY_TRUSTED_PROXY_HOPS
+              value: "1"
+            - name: RESEARCHLY_RATE_LIMIT_PER_MIN
+              value: "30"
+            # Accounts (S2). Both are public by design (the browser has
+            # them too); Row-Level Security protects the data. Empty = the
+            # engine runs without accounts.
+            - name: RESEARCHLY_SUPABASE_URL
+              value: "${SUPABASE_URL}"
+            - name: RESEARCHLY_SUPABASE_PUBLISHABLE_KEY
+              value: "${SUPABASE_PUBLISHABLE_KEY}"
+          resources:
+            limits:
+              # spaCy parses on one core; the lock means one analysis at a
+              # time, so a second vCPU would sit idle.
+              cpu: "1"
+              # Measured peak 2.8 GiB on a 990k-character request (the cap);
+              # ~0.4 GiB resident when idle. 4 GiB leaves headroom.
+              memory: 4Gi
+          startupProbe:
+            # uvicorn opens the port only after the lifespan warm-up, so an
+            # open port means a warm engine.
+            tcpSocket:
+              port: 8080
+            periodSeconds: 2
+            timeoutSeconds: 2
+            failureThreshold: 60      # up to 120 s
+        - name: languagetool
+          # Pinned by tag and digest; 6.8 matches the noise-floor baseline.
+          # Mirror into Artifact Registry before production if Docker Hub
+          # pull limits or availability become a concern.
+          image: docker.io/erikvl87/languagetool:6.8@sha256:ef8fa12cbd485166c9ceeb7139d76d56d07707a624da6bb1fc1fbb5411750527
+          env:
+            - name: Java_Xms
+              value: 512m
+            - name: Java_Xmx
+              value: 1536m
+          resources:
+            limits:
+              # Checks run while the engine waits (sequential per request),
+              # so one vCPU each is enough.
+              cpu: "1"
+              # Measured 1.3 GiB at the 1M-character cap with Xmx 1 GiB;
+              # Xmx 1.5 GiB + JVM overhead fits in 2 GiB.
+              memory: 2Gi
+          startupProbe:
+            # Capability, not presence: a real check, as the engine's health
+            # probe does. The JVM listens before rules are loaded.
+            httpGet:
+              path: /v2/check?language=en-US&text=probe
+              port: 8010
+            periodSeconds: 3
+            timeoutSeconds: 3
+            failureThreshold: 40      # up to 120 s

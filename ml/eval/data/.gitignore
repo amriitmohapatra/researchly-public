@@ -1,0 +1,5 @@
+# AESW is CC BY-NC-SA 4.0 with additional no-re-identification clauses.
+# Never redistribute the corpus or text derived from it — see
+# docs/eval-corpora.md. Re-download with the commands in that file.
+*
+!.gitignore

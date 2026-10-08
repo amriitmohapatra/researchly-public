@@ -1,0 +1,97 @@
+# Real-document bench (ml/realdocs/): fetch openly licensed articles,
+# preprints, LaTeX projects and Word test files listed in the manifest, read
+# each one through every file reader, analyse it, and check the invariants
+# every document must satisfy (offsets, spans, masking, no crash, no hang,
+# no file or network access while reading).
+#
+# Documents are fetched at run time into $RUNNER_TEMP and never committed.
+# The artifact holds report.json/report.md (no document text), the fetch
+# log (URLs and sha256 only) and samples.jsonl (short snippets, only for
+# CC BY / CC0 / permissive-licence items; the repo is private and so are its
+# artifacts). Only report.md reaches the step summary.
+name: Real documents
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Check only the first N manifest items (blank = all)"
+        required: false
+        default: ""
+  schedule:
+    - cron: "17 4 * * 1"          # Mondays 04:17 UTC
+  push:
+    branches: ["claude/**"]
+    paths:
+      - "ml/realdocs/**"
+      - "packages/core/researchly/**"
+      - ".github/workflows/realdocs.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: realdocs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  realdocs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      LIMIT: ${{ github.event.inputs.limit }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: |
+            packages/core/requirements.txt
+            ml/realdocs/requirements.txt
+      - uses: actions/setup-java@v4       # grammar tier (LanguageTool)
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Cache LanguageTool download
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/language_tool_python
+          key: languagetool-${{ hashFiles('packages/core/requirements.txt') }}
+      - name: Install
+        run: |
+          python -m pip install -r packages/core/requirements.txt -r ml/realdocs/requirements.txt
+          python -m spacy download en_core_web_sm
+      - name: Bench tests
+        run: python -m pytest ml/realdocs -q
+      # Cache and outputs default to $RUNNER_TEMP/researchly-realdocs/,
+      # outside the checkout (the scripts refuse a path inside the repo).
+      - name: Where outputs go
+        run: echo "OUT=$RUNNER_TEMP/researchly-realdocs/out" >> "$GITHUB_ENV"
+      - name: Fetch (manifest.yaml if present, else manifest.example.yaml)
+        run: |
+          mkdir -p "$OUT"
+          python ml/realdocs/fetch.py --log "$OUT/fetch_log.jsonl" ${LIMIT:+--limit "$LIMIT"}
+      - name: Read and analyse
+        run: python ml/realdocs/run.py --out "$OUT" --require-grammar ${LIMIT:+--limit "$LIMIT"}
+      - name: Report (fails on any invariant failure, crash or hang)
+        run: python ml/realdocs/report.py --out "$OUT" > /dev/null
+      - name: Step summary
+        if: always()
+        run: |
+          if [ -f "$OUT/report.md" ]; then cat "$OUT/report.md" >> "$GITHUB_STEP_SUMMARY"; fi
+          # The report holds counts and ids, no document text: print it so
+          # it can be read from the job log too.
+          if [ -f "$OUT/report.md" ]; then cat "$OUT/report.md"; fi
+      - name: Upload report and samples
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: realdocs-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            ${{ runner.temp }}/researchly-realdocs/out/report.json
+            ${{ runner.temp }}/researchly-realdocs/out/report.md
+            ${{ runner.temp }}/researchly-realdocs/out/samples.jsonl
+            ${{ runner.temp }}/researchly-realdocs/out/fetch_log.jsonl

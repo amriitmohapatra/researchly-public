@@ -1,0 +1,70 @@
+---
+title: "Income-stratified contact patterns and dengue transmission"
+author: "A. Mohapatra"
+format: html
+bibliography: refs.bib
+---
+
+# Abstract
+
+Dengue is the most rapidly spreading mosquito-borne viral disease. We
+performed an estimation of transmission parameters using an age-structured
+SEIR model with income-stratified contact matrices. Vaccination reduced
+transmission in all scenarios. The intervention had a significant effect on
+attack rates. Our novel cutting-edge framework proves that heterogeneity
+matters for equitable policy design.
+
+# Introduction
+
+There are many factors that shape dengue transmission in urban settings.
+The estimation of contact patterns, which requires the collection,
+harmonization, and validation of survey data across heterogeneous
+socioeconomic strata and multiple administrative regions, remains
+challenging. However, income-related heterogeneity in contact patterns
+remains largely unquantified in Southeast Asian settings. It is important to
+note that prior work has focused on age structure alone [@mossong2008;
+@prem2017].
+
+In this paper we utilize household survey data in order to construct
+income-stratified contact matrices. It might possibly be suggested that
+such stratification could potentially improve model realism. The DALY
+burden was computed for each and every scenario.
+
+# Methods
+
+Participants were recruited from four districts. Samples were incubated at
+37 degrees for two hours before analysis. Contact diaries were collected
+over a 14-day period and were digitized by trained field staff. The force
+of infection $\lambda_i(t)$ was modelled as:
+
+$$
+\lambda_i(t) = \sum_j \beta_{ij} \frac{I_j(t)}{N_j}
+$$
+
+```{r}
+#| echo: false
+# this code should never be checked: utilize prior to significant
+plot(1:10)
+```
+
+We conducted a comparison of model fits using WAIC. The transmission rate
+income quintile contact matrix estimation procedure is described in the
+supplement. Model fitting was performed by the probabilistic programming
+language Stan.
+
+# Results
+
+Attack rates rose sharply in the lowest income quintile, according to our
+simulations. The vaccination programme reduced hospitalizations by 34%
+(95% CrI: 28–41%). The difference between quintiles was significant.
+The observed pattern was driven by household crowding, which was shown by
+Garcia et al.
+
+# Discussion
+
+Our results prove that income stratification clearly matters for dengue
+control. The implementation of the intervention, despite the fact that
+coverage was incomplete in the the lowest quintile, resulted in substantial
+reductions in burden. These findings may perhaps suggest that equity-aware
+vaccination strategies could possibly outperform uniform allocation,
+in our study.

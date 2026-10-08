@@ -1,0 +1,18 @@
+# Build outputs of the macOS app: regenerable with build_app.sh / make_dmg.sh /
+# build_installer.sh, and several exceed GitHub's 100 MB per-file limit.
+**/desktop-mac/build/
+**/desktop-mac/dist/
+**/desktop-mac/vendor/
+*.dmg
+*.pkg
+shipping/Researchly-macOS-v0.8.zip
+
+# Python and OS clutter
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.DS_Store
+
+# Isolated working copies used by Claude Code sub-agents.
+.claude/worktrees/

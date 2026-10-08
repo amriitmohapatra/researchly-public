@@ -1,0 +1,48 @@
+{
+  "name": "researchly-lsp",
+  "displayName": "Researchly",
+  "description": "Section-aware, explainable writing suggestions for scientific documents (.qmd, .md, .tex). Runs the local Researchly language server — nothing leaves your machine.",
+  "version": "0.2.0",
+  "publisher": "researchly-local",
+  "private": true,
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Linters"],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onLanguage:quarto",
+    "onLanguage:latex",
+    "onLanguage:tex",
+    "onLanguage:rmd",
+    "onLanguage:plaintext"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Researchly",
+      "properties": {
+        "researchly.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Python interpreter used to run the Researchly language server (needs spaCy + pygls installed)."
+        },
+        "researchly.prototypePath": {
+          "type": "string",
+          "default": "~/Documents/Researchly/packages/core",
+          "description": "Path to the folder containing the `researchly` package (packages/core in the repository)."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "researchly.restart",
+        "title": "Researchly: Restart language server"
+      }
+    ]
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  }
+}
