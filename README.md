@@ -173,3 +173,12 @@ planning documents and are not published.
 ## Licence
 
 MIT; see `LICENSE`. The demo paper is made up for this project.
+
+## Contributors
+
+Researchly is created and maintained by [Amriit Mohapatra](https://github.com/amriitmohapatra).
+
+- **Claude (Anthropic)** — implementation and publication contributions, recorded in the repository’s commit history.
+- **Codex (OpenAI)** — codebase analysis, reproduced findings, and feature recommendations in the [9 October 2026 review](Codex_Review_9Oct2026.md).
+
+Claude and Codex are AI development assistants; the maintainer directs and reviews their contributions.
