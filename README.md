@@ -7,20 +7,28 @@ leaves every change to you. It never writes for you.
 Try it at **[researchly-chi.vercel.app](https://researchly-chi.vercel.app)**,
 on your own draft or on the made-up demo paper.
 
-[![Researchly in about a minute: play the video](media/researchly-video.png)](media/researchly-video.mp4?raw=true)
+[![Researchly in 80 seconds: play the video](media/researchly-video.png)](media/researchly-video.mp4?raw=true)
 
-*Researchly in about a minute (click to play). The paper in it is the
+*Researchly in 80 seconds (click to play). The paper in it is the
 made-up demo paper in `demo/`, with 17 mistakes planted on purpose. The
 narration is a synthetic voice (Kokoro, an open-source text-to-speech
 model).*
 
 ## Why
 
-Feedback on scientific writing usually arrives late, after a draft has gone
-to a supervisor or a reviewer, and no two readers give the same advice.
-Grammar checkers stop at the sentence; generative tools write the text for
-you. Researchly reads the whole draft and shows what a careful reader would
-notice.
+You spend months on a manuscript, alone or with a team, and send it for
+peer review. The decision comes back: one reviewer lists your grammar
+mistakes, another says a key section is hard to follow. Neither comment is
+about your science, and both cost you a round of revision.
+
+Researchly does not take the reviewer's place. Reviewers still judge the
+science: the question, the design, whether the results hold up. Researchly
+is not a domain expert. It reads your draft before they do and helps you
+present the work clearly, so reviewers can spend their time on your
+science rather than your sentences. Grammar checkers stop at the sentence;
+generative tools write the text for you. Researchly reads the whole draft
+the way a careful reader would, explains each point, and leaves every
+change to you.
 
 - **Same draft, same advice.** With the same settings, the same text gets
   the same feedback: the checks are written rules, not a generative model.
@@ -31,17 +39,59 @@ notice.
   local mode that sends nothing anywhere is available for the Word add-in.
 - **It never writes for you.** No drafting, rewriting or paraphrasing, so it
   fits where generative AI is restricted.
-- **Section-aware.** The same sentence gets different advice in Methods and
-  in the Discussion: passive voice is expected in Methods.
-- **Checks across the whole draft.** Figures and tables cited in order,
-  abbreviations defined once, numbers in the text found in the table they
-  cite, equations that belong to sentences.
 
-Beyond sentences, it gives a reviewer's brief (the questions a critical
-reader asks, with the sentences each answer rests on), a narrative map
-(which moves each section makes and which are missing), short lessons, and
-reporting checklists for epidemiology (STROBE, CONSORT, PRISMA, EPIFORGE)
-that check reporting, never the science.
+## What it does
+
+**Checks on the draft**
+- **Suggestions, each explained.** Grammar, spelling, word choice, sentence
+  clarity, tone and claims. Each is marked as a Correction, Improvement,
+  Convention or Preference, says why in plain words, and names its source.
+- **Section-aware advice.** Headings such as Methods and Discussion change
+  what is flagged: passive voice is expected in Methods.
+- **Whole-document consistency.** Figures and tables cited and in order,
+  captions, abbreviations defined once, numbers in the text found in the
+  table they cite, equations punctuated as part of a sentence, and terms
+  used the same way throughout.
+- **Grammar and spelling tiers.** An open-source LanguageTool run alongside
+  Researchly's own engine, and a spelling tier with a scientific word list
+  and your own dictionary. A tier that is off says so; none fails silently.
+
+**Reading the whole paper** (in Revise mode)
+- **Reviewer's brief.** The questions a critical reader asks, each answered
+  with what was detected and the sentences it rests on, or marked as not
+  assessed.
+- **Narrative map.** For each section, the moves a reader expects (for
+  example the gap and the aim in an Introduction), marked present, missing
+  or out of order, with a question and a frame to fill in. The words stay
+  yours.
+- **Reporting checklists.** STROBE, CONSORT, PRISMA and EPIFORGE items,
+  each "reported" with your sentence or "needs your check". They check
+  reporting, never the science.
+
+**Learning as you write**
+- **Lessons.** 26 short lessons, each with a before-and-after example and a
+  habit to keep, linked from every suggestion.
+- **Progress, if you opt in.** Per-rule trends across your checks, stored as
+  counts only, never text.
+
+**How you work with it**
+- **Draft and Revise.** Draft checks what you have written so far; Revise
+  checks the finished manuscript as a whole.
+- **Check as.** Research article, thesis chapter, abstract, commentary,
+  policy brief, grant proposal or response to reviewers, or a guess from the
+  headings that shows what it rests on.
+- **Files.** Paste text, or upload Word (.docx), LaTeX (.tex or an Overleaf
+  .zip), Markdown, Quarto or R Markdown.
+- **Print or save as PDF.** The document with its highlights numbered and
+  the suggestions beside them, then the brief and the map, made in your
+  browser.
+- **Optional account.** Muted rules, your dictionary and your settings
+  follow you between the website and Word.
+
+**Where it runs**
+- The website, the Word add-in (hosted, or with a local engine that sends
+  nothing anywhere), the command line, and a language server for VS Code
+  and Positron (preview).
 
 ## Four kinds of suggestion
 
